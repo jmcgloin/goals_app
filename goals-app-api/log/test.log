@@ -1,0 +1,651 @@
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "goals"[0m
+  [1m[35m (86.5ms)[0m  [1m[35mCREATE TABLE "goals" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "goalname" varchar, "deadline" varchar, "importance" integer, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (74.3ms)[0m  [1m[35mCREATE  INDEX "index_goals_on_user_id" ON "goals" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "jwt_blacklists"[0m
+  [1m[35m (89.9ms)[0m  [1m[35mCREATE TABLE "jwt_blacklists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "jti" varchar, "exp" datetime)[0m
+  [1m[35m (81.6ms)[0m  [1m[35mCREATE  INDEX "index_jwt_blacklists_on_jti" ON "jwt_blacklists" ("jti")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "steps"[0m
+  [1m[35m (81.1ms)[0m  [1m[35mCREATE TABLE "steps" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "stepname" varchar, "minutes_todo" integer, "step_number" integer, "goal_id" integer NOT NULL, "completed" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (100.3ms)[0m  [1m[35mCREATE  INDEX "index_steps_on_goal_id" ON "steps" ("goal_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (89.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "username" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (73.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (96.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "agoals" ("id" integer NOT NULL PRIMARY KEY, "goalname" varchar DEFAULT NULL, "deadline" varchar DEFAULT NULL, "importance" integer DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "tindex_agoals_on_user_id" ON "agoals" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "agoals" ("id","goalname","deadline","importance","user_id","created_at","updated_at")
+                     SELECT "id","goalname","deadline","importance","user_id","created_at","updated_at" FROM "goals"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "goals"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "goals" ("id" integer NOT NULL PRIMARY KEY, "goalname" varchar DEFAULT NULL, "deadline" varchar DEFAULT NULL, "importance" integer DEFAULT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c5fd9c8a38"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_goals_on_user_id" ON "goals" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "goals" ("id","goalname","deadline","importance","user_id","created_at","updated_at")
+                     SELECT "id","goalname","deadline","importance","user_id","created_at","updated_at" FROM "agoals"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "agoals"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (70.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "asteps" ("id" integer NOT NULL PRIMARY KEY, "stepname" varchar DEFAULT NULL, "minutes_todo" integer DEFAULT NULL, "step_number" integer DEFAULT NULL, "goal_id" integer NOT NULL, "completed" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_asteps_on_goal_id" ON "asteps" ("goal_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "asteps" ("id","stepname","minutes_todo","step_number","goal_id","completed","created_at","updated_at")
+                     SELECT "id","stepname","minutes_todo","step_number","goal_id","completed","created_at","updated_at" FROM "steps"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "steps"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "steps" ("id" integer NOT NULL PRIMARY KEY, "stepname" varchar DEFAULT NULL, "minutes_todo" integer DEFAULT NULL, "step_number" integer DEFAULT NULL, "goal_id" integer NOT NULL, "completed" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_ae398f8e91"
+FOREIGN KEY ("goal_id")
+  REFERENCES "goals" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_steps_on_goal_id" ON "steps" ("goal_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "steps" ("id","stepname","minutes_todo","step_number","goal_id","completed","created_at","updated_at")
+                     SELECT "id","stepname","minutes_todo","step_number","goal_id","completed","created_at","updated_at" FROM "asteps"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "asteps"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (66.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (69.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (64.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200121075936)[0m
+  [1m[35m (49.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200121074711),
+(20200121074831),
+(20200121075101);
+
+[0m
+  [1m[35m (70.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-01-21 09:01:59.914162"], ["updated_at", "2020-01-21 09:01:59.914162"]]
+  [1m[35m (77.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "1267c0fedf19019ec0840771927842e3caf4d47a"], ["created_at", "2020-01-21 09:01:59.995117"], ["updated_at", "2020-01-21 09:01:59.995117"]]
+  [1m[35m (46.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:02:00 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$RMeWW49Ex606eyPt4m3r6erHSCiaMond1NujrST2E4TYVAohVQ7ci"], ["created_at", "2020-01-21 09:02:00.251628"], ["updated_at", "2020-01-21 09:02:00.251628"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 35ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 9220)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:02:00 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$ptOwb6gm3/Wl7Q/PyGzJKuzkIx71JLz8hNrFszOLdOluQ7Vdp64De"], ["created_at", "2020-01-21 09:02:00.274480"], ["updated_at", "2020-01-21 09:02:00.274480"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:02:24 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$WHT/8pGzclmIw/RqhpqVU.VgxIz0XJ7M6j2RmNr8ruU8N81VOJEjK"], ["created_at", "2020-01-21 09:02:24.176162"], ["updated_at", "2020-01-21 09:02:24.176162"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:02:24 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$YURFjGSSaOuqPlU29rUkQOQxdrdIFxiVY0/Yl0whiMppzK9ASCkuW"], ["created_at", "2020-01-21 09:02:24.188501"], ["updated_at", "2020-01-21 09:02:24.188501"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1141)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$0M7ysHBweSOmjTbjWGCbdeeEC12/KRlNsUzfQjYI8t5ccSOkh0Kpa"], ["username", "Millhouse Manastorm"], ["created_at", "2020-01-21 09:02:25.324847"], ["updated_at", "2020-01-21 09:02:25.324847"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:02:25 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1294)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:03:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$9k.a7LipnEZ4canx8Ppe8u.j/gmEllpwlIMJfb8b/tQwF./INNxF."], ["created_at", "2020-01-21 09:03:01.163222"], ["updated_at", "2020-01-21 09:03:01.163222"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:03:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$eLQau68B7GTtEsZ7Qxmx8uM0b/72Dh/xPv.mrqYxMpZubg7k0p5C."], ["created_at", "2020-01-21 09:03:01.177303"], ["updated_at", "2020-01-21 09:03:01.177303"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1141)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$uiG6HfB14Sus1Z8RQ0mCdOxt8kiqnmam/qH097hWxEFZqvt9hIDGq"], ["username", "Arthas Menthil"], ["created_at", "2020-01-21 09:03:01.350273"], ["updated_at", "2020-01-21 09:03:01.350273"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:03:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1295)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$8SoVH2fw07JJE7RbFs4si.TiJUZcRj2GCk/zAHN7824equxJpPhEW"], ["created_at", "2020-01-21 09:07:01.161697"], ["updated_at", "2020-01-21 09:07:01.161697"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.2ms | Allocations: 8600)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$cHGhfXIrBWrncRy447bPZeQp8HAToNq8b1xFrzpWxaWdPuLxxfB6m"], ["created_at", "2020-01-21 09:07:01.173751"], ["updated_at", "2020-01-21 09:07:01.173751"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1141)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$Punm7ItpVCfCh1aoJ.56lOXq9soAMQbrgrpCiS9JxBP/47NbszWLK"], ["username", "Durotan"], ["created_at", "2020-01-21 09:07:01.327180"], ["updated_at", "2020-01-21 09:07:01.327180"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:01 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:28 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$vUm4cBsSHKkWGnKZ6gJptOtK6oXE9M/M5cQBlWYXHtrW3Xhks3Vam"], ["created_at", "2020-01-21 09:07:28.579210"], ["updated_at", "2020-01-21 09:07:28.579210"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:28 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$o90k0XiiJE5ZBDbFTZIBi.2GEBwADTz3AknmBPjO4qcpKB1dQMHuS"], ["created_at", "2020-01-21 09:07:28.590860"], ["updated_at", "2020-01-21 09:07:28.590860"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$bTeLilqauv6oPr7YHCnU8OBnPiHYavdQUUFIAtqY.9G7zAocHWREW"], ["username", "Moroes"], ["created_at", "2020-01-21 09:07:28.745310"], ["updated_at", "2020-01-21 09:07:28.745310"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:07:28 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:10:27 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$foEoNpVnofZy2Cxst.tqouaDdid6z8fgNr6Ug1.7DsVejJH1YZvF2"], ["created_at", "2020-01-21 09:10:27.109639"], ["updated_at", "2020-01-21 09:10:27.109639"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:10:27 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$mEdv61Pg0QM/ZEAOUO2O2OsNHOO4rEtlELDfBpuz/RVLBeSZcE9sS"], ["created_at", "2020-01-21 09:10:27.121479"], ["updated_at", "2020-01-21 09:10:27.121479"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$SG/JBUpY5oc7m/EVptLoduy23yGZb7P0gMMzf3JpAXj8oXaxBS66e"], ["username", "Bolvar Fordragon"], ["created_at", "2020-01-21 09:10:27.267832"], ["updated_at", "2020-01-21 09:10:27.267832"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:10:27 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:11:48 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$xqfzGICibpHemY/yVFc26ecx.e/hdzZt.9BDroyxY9rfebGL4YVv6"], ["created_at", "2020-01-21 09:11:48.134391"], ["updated_at", "2020-01-21 09:11:48.134391"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:11:48 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$nCbKy81x3XicHYMzJ.nrxOBpLmNr8eWUVOlRjyRnzapXmmY9JzIgi"], ["created_at", "2020-01-21 09:11:48.146101"], ["updated_at", "2020-01-21 09:11:48.146101"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:30 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$6zmcQrH5EgW2tsXyUDMrvOrL3/6aGMvF1G9fx4jp9rx1/qRz70jGy"], ["created_at", "2020-01-21 09:12:30.868345"], ["updated_at", "2020-01-21 09:12:30.868345"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:30 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$8aPKv1hQOfaiGwiGNaEI1.iYctOxsNGeo/4c3fS5Mp96yfA4OObRW"], ["created_at", "2020-01-21 09:12:30.880355"], ["updated_at", "2020-01-21 09:12:30.880355"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 1141)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$z3LE5fVk9A9DGegYrT.AcOYjvTnVPZraWUp1LvRgNy25p1QyJsMRS"], ["username", "Ner'zhul"], ["created_at", "2020-01-21 09:12:31.029208"], ["updated_at", "2020-01-21 09:12:31.029208"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:31 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:34 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$WEdxm4zOWKTQuFyCkJaEDufkdwH.mR6v8RikLwr3eSis2ub/98YJi"], ["created_at", "2020-01-21 09:12:34.098297"], ["updated_at", "2020-01-21 09:12:34.098297"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:34 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$U/BwGNx.DlT96gBvLZ.9muArd0txLFFMQVXfvLlBZsjHyZEUkfvOi"], ["created_at", "2020-01-21 09:12:34.109872"], ["updated_at", "2020-01-21 09:12:34.109872"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$1BU8h.WujAhqOmWbqGJYH.whNFxjS6LZOWBrJo35/jkoNG1p3FCm6"], ["username", "Gul'dan"], ["created_at", "2020-01-21 09:12:34.256891"], ["updated_at", "2020-01-21 09:12:34.256891"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:34 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:36 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$PgGg7c5EKWs4cfAp0E5thOcl4RnFVFxjYNorfcEcBE.AerQVbaSYS"], ["created_at", "2020-01-21 09:12:36.588539"], ["updated_at", "2020-01-21 09:12:36.588539"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:36 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$4yRXWP7nOZySZ/Ga5/Eh0OZKt90L.e9y7GWXvXhl1ksqjLsE7dGU."], ["created_at", "2020-01-21 09:12:36.600199"], ["updated_at", "2020-01-21 09:12:36.600199"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$9bVWmzCkEFpyHhYEHNC9C.z0wJ19yPLIAhGe2gzTi3X9H2W9OuVd6"], ["username", "Lady Taria"], ["created_at", "2020-01-21 09:12:36.750892"], ["updated_at", "2020-01-21 09:12:36.750892"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:36 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:39 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$w5j2X5mSBN9hXutrFEf1V.hUdogduHauXTh/mauHXFH.0KvkPsDpy"], ["created_at", "2020-01-21 09:12:39.037256"], ["updated_at", "2020-01-21 09:12:39.037256"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:39 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$t1zZ.O4sSu/MfiN7h2/iX.5A/TiHM9v7IPm8Hr7uGLmUul3echGCe"], ["created_at", "2020-01-21 09:12:39.048882"], ["updated_at", "2020-01-21 09:12:39.048882"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$eFPSZF4.hvdrNsWknlMlyeaKHJlycUjSZVYgjxIDoziLu4VPzkDYG"], ["username", "Orgrim Doomhammer"], ["created_at", "2020-01-21 09:12:39.197974"], ["updated_at", "2020-01-21 09:12:39.197974"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:12:39 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1295)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:13:07 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$AWISoNSBAiBx1QEqQxhvnefS.PvP3vOHQkVn53li4p0JzrDo7MI4S"], ["created_at", "2020-01-21 09:13:07.057350"], ["updated_at", "2020-01-21 09:13:07.057350"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:13:07 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$0w4T9iQOAE6D0QSuxF0rc.o4M0NqBPZJIto/V2nKfu3wRCl5mVGfO"], ["created_at", "2020-01-21 09:13:07.069138"], ["updated_at", "2020-01-21 09:13:07.069138"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:13:31 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$Wxcf538qyyyUi8EVhpkZDebxd.Wzx6s.cN1/WNH9lEmqtjq0Z0Ley"], ["created_at", "2020-01-21 09:13:31.102559"], ["updated_at", "2020-01-21 09:13:31.102559"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:13:31 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$8es0qCuFahRufrqALRAFI.Hmtu0YjkYjoOtXhsrJ8UNQID8yMzxL6"], ["created_at", "2020-01-21 09:13:31.114370"], ["updated_at", "2020-01-21 09:13:31.114370"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:14:28 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$R0wOHHw/kWXd6H22MnIsMOsykakLg1Cm5.nHEYle2Zx3ZdBZe0cry"], ["created_at", "2020-01-21 09:14:28.754997"], ["updated_at", "2020-01-21 09:14:28.754997"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 8600)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:14:28 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$d6DcOAV1lYZ.7NShvJcXpOKlKNSnV9DmUKYZMHxaB8kWDpc6Um8mG"], ["created_at", "2020-01-21 09:14:28.766582"], ["updated_at", "2020-01-21 09:14:28.766582"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1141)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:15:06 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$gYhpEZ9vJgzv8canYCWPnO5XKNNmGmwBu.UauajsX7HO.XXQ.IQPa"], ["created_at", "2020-01-21 09:15:09.658729"], ["updated_at", "2020-01-21 09:15:09.658729"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3479ms (Views: 0.1ms | ActiveRecord: 3.1ms | Allocations: 26728)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:15:09 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$b1qm9z8XMTgfmlw.nlsasu.2hbGP17TuegMILamliev3ja21uvWi."], ["created_at", "2020-01-21 09:15:10.741814"], ["updated_at", "2020-01-21 09:15:10.741814"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 1076ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 8303)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:15:12 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$fUm3hLUCfNFDKrUqvV.90uYCIY24mFpBRxTTJEEC3RhToB2r7JjjK"], ["created_at", "2020-01-21 09:15:13.263354"], ["updated_at", "2020-01-21 09:15:13.263354"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 613ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 26728)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2020-01-21 04:15:13 -0500
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"j@son.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :username[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$04$6siRgAxLx1xiTKGEZkUsHu1tuh7N8yhOadGKru3dLrZ7H7GKZBq1a"], ["created_at", "2020-01-21 09:15:13.631116"], ["updated_at", "2020-01-21 09:15:13.631116"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 360ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 8303)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
