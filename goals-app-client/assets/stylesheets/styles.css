@@ -1,0 +1,45 @@
+body {
+	display: flex;
+	height: 98vh;
+	flex-direction: column;
+}
+
+header, main, footer {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+main {
+	flex-grow: 1;
+}
+
+#info-container {
+	text-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+	flex-shrink: 1;
+	width: 100%;
+}
+
+#nav-container {
+	display: flex;
+	flex-grow: 1;
+	width: 100%;
+	justify-content: space-between;
+	height: 15vh;
+	margin-top: 1vh;
+}
+
+#logo {
+	text-align: center;
+	min-width: 30px;
+	width: 30%;
+	height: 100%;
+}
+
+#nav-link-container {
+	width: 50%;
+}
+

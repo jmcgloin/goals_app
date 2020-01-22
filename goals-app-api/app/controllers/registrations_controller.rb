@@ -1,19 +1,18 @@
 class RegistrationsController < Devise::RegistrationsController
+	# require 'ostruct'
 	respond_to :json
 
 	def create
 		begin
 			super
-		rescue ActiveRecord::RecordInvalid => invalid
+		rescue ActiveRecord::RecordInvalid => e
 			binding.pry()
 			render_resource(e.record)
 		rescue ActiveRecord::RecordNotUnique => e
-			err = Openstruct.new(errors: {user: 'Already exists'})
+			err = OpenStruct.new(errors: {user: 'Already exists'})
 			validation_error(err)
 		rescue ActiveRecord::Rollback => e
 			binding.pry()
-
-			
 		end
 	end
 end

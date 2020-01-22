@@ -1,5 +1,5 @@
 Fabricator(:user) do
 	username Faker::Games::WorldOfWarcraft.hero
 	email Faker::Internet.email
-	password 'asd'
+	password Faker::Games::Pokemon.name
 end
