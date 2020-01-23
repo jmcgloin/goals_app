@@ -1,13 +1,22 @@
 class App {
 	constructor() {
-		console.log('app loaded')
-		this.initializeBindingsAndListeners()
+		this.bindDOMElements()
+		this.bindEventListeners()
+		this.renderPage(new SignupPage(this.pageContent))
+		this.renderPage(new InfoDisplay(this.infoContainer))
 	}
 
-	initializeBindingsAndListeners() {
+	bindDOMElements() {
 		this.infoContainer = document.getElementById('info-container')
 		this.signInLogIn = document.getElementById('sign-log-in')
-		this.navLinks = document.getElementById('nav-links')
 		this.pageContent = document.getElementById('page-content')
+	}
+
+	bindEventListeners() {
+
+	}
+
+	renderPage(page) {
+		page.render()
 	}
 }

@@ -1,4 +1,4 @@
-class signUp {
+class SignupForm {
 
 
   pageHTML() {
@@ -27,7 +27,7 @@ class signUp {
         </div>
       </form>
       <p class="text-center text-gray-500 text-xs">
-        &copy;2019 Acme Corp. All rights reserved.
+        &copy;2019 GoalMinder All rights reserved.
       </p>
     </div>`
   }
