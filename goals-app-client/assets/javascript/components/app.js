@@ -2,7 +2,8 @@ class App {
 	constructor() {
 		this.bindDOMElements()
 		this.bindEventListeners()
-		this.renderPage(new SignupPage(this.pageContainer))
+		this.adapter = new BaseAdapter('http://localhost:3000')
+		this.renderPage(new SignupPage(this.pageContainer, this.adapter))
 		// this.renderInfo('Testing', )//'no content')
 	}
 

@@ -1,5 +1,19 @@
 class BaseAdapter {
-	constructor(method = null, headers = null, ) {
-		this.baseURL = 'http://localhost:3000'
+	constructor(baseURL) {
+		this.baseURL = baseURL
+		this.token = null
+	}
+
+	get headers() {
+		const baseHeaders = {
+			"Accept": "application/json",
+			"Content-Type": "application/json"
+		}
+		return this.token ? {...baseHeaders, "Authorization": this.token} : baseHeaders
+	}
+
+	checkStatus(res) {
+		console.log(res)
+		if(res.status < 200 || res.status > 299) throw new Error(res.status, res.message)
 	}
 }

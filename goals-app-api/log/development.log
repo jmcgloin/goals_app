@@ -850,3 +850,139 @@ Processing by RegistrationsController#create as JSON
 Completed 422 Unprocessable Entity in 265ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 188269)
 
 
+Started POST "/signup" for ::1 at 2020-01-23 01:32:08 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 177ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 833)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:34:46 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 176ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 833)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:35:53 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 178ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 831)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:36:21 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jas", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 175ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 844)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:39:14 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 171ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 888)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:39:36 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jas", "email"=>"j@son.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jas", "email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$11$.3OPtC5OTfL2RQcQzzFZIuUiuD4ymwPgzYmYqr/NOmc/ScV4Dfmey"], ["username", "jas"], ["created_at", "2020-01-23 06:39:36.416730"], ["updated_at", "2020-01-23 06:39:36.416730"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (203.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 385ms (Views: 0.6ms | ActiveRecord: 203.3ms | Allocations: 4139)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/signup" for ::1 at 2020-01-23 01:47:28 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"nosaj", "email"=>"nos@j.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"nosaj", "email"=>"nos@j.com", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "nos@j.com"], ["encrypted_password", "$2a$11$vCqhK0xKGifztTT1ySwWmOLq4IOmVv9AJFBdlemsB7AW05IUqikNe"], ["username", "nosaj"], ["created_at", "2020-01-23 06:47:28.503278"], ["updated_at", "2020-01-23 06:47:28.503278"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (64.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 246ms (Views: 0.3ms | ActiveRecord: 65.1ms | Allocations: 3905)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 01:49:30 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "wo@iziyu.tw"], ["encrypted_password", "$2a$11$6vyZtehi2vGaulG8rcC33uh9rP29pUF8ZKZvnjUXJQ1dkpJCBt.jC"], ["username", "ziyu"], ["created_at", "2020-01-23 06:49:31.114439"], ["updated_at", "2020-01-23 06:49:31.114439"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (81.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 262ms (Views: 0.3ms | ActiveRecord: 82.0ms | Allocations: 3909)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 02:00:33 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "wo@iziyu.tw"], ["encrypted_password", "$2a$11$ZP0ihYkSsPnT/YMB4U32/e0/y0yS4TV4IghwVWMhgugmbgiMWAG.C"], ["username", "ziyu"], ["created_at", "2020-01-23 07:00:34.143008"], ["updated_at", "2020-01-23 07:00:34.143008"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 400 Bad Request in 176ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2670)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 02:01:00 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"ziyu", "email"=>"wo@iziyu.tw", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "wo@iziyu.tw"], ["encrypted_password", "$2a$11$gN7C9gUvfulAZ9kG8O3VK.QuJELLKmqbunsK3zD8l0GuZZPHWg2zC"], ["username", "ziyu"], ["created_at", "2020-01-23 07:01:00.808921"], ["updated_at", "2020-01-23 07:01:00.808921"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 400 Bad Request in 185ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2671)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 02:12:47 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"data"=>{}}, "registration"=>{"user"=>{"data"=>{}}}}
+[31mUnpermitted parameter: :data[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1109)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 02:26:26 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"data"=>{}}, "registration"=>{"user"=>{"data"=>{}}}}
+[31mUnpermitted parameter: :data[0m
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1106)
+
+
+Started POST "/signup" for ::1 at 2020-01-23 02:29:45 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jj", "email"=>"jj", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jj", "email"=>"jj", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "jj"], ["encrypted_password", "$2a$11$FOdunWW0OP8KopGZG28kLOK4Oo27dM7OPcYaQyNWATu6PckKi4m5W"], ["username", "jj"], ["created_at", "2020-01-23 07:29:45.746789"], ["updated_at", "2020-01-23 07:29:45.746789"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (69.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 251ms (Views: 0.3ms | ActiveRecord: 69.8ms | Allocations: 3902)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/signup" for ::1 at 2020-01-23 02:30:59 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"asd", "email"=>"asd", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"asd", "email"=>"asd", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "asd"], ["encrypted_password", "$2a$11$PbR4sPK9afUgSLrso7l9LOqTkkIjmG7/i.jpX6N3VzTScX29DFS7y"], ["username", "asd"], ["created_at", "2020-01-23 07:30:59.960916"], ["updated_at", "2020-01-23 07:30:59.960916"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (178.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 358ms (Views: 0.3ms | ActiveRecord: 179.2ms | Allocations: 3982)
+
+
