@@ -1,10 +1,10 @@
 class InfoDisplay {
 	constructor(message, type) {
-		this.container = document.getElementById('info-contanier')
-		this.content = new InfoBanner(message, typ)
+		this.container = document.getElementById('info-container')
+		this.content = new InfoBanner(message, type)
 	}
 
 	render() {
-		this.container.innerHTML = 
+		this.container.innerHTML = this.content.pageHTML()
 	}
 }

@@ -15,6 +15,11 @@ main {
 	flex-grow: 1;
 }
 
+
+header {
+	align-items: center;
+}
+
 #info-container {
 	text-align: center;
 	vertical-align: middle;
@@ -26,20 +31,29 @@ main {
 #nav-container {
 	display: flex;
 	flex-grow: 1;
-	width: 100%;
+	width: 80vw;
 	justify-content: space-between;
-	height: 15vh;
+	height: 5vh;
 	margin-top: 1vh;
 }
 
 #logo {
-	text-align: center;
+	text-align: left;
 	min-width: 30px;
 	width: 30%;
 	height: 100%;
+	padding-left: 1rem;
 }
 
 #nav-link-container {
-	width: 50%;
+	width: 30%;
+	text-align: right;
+	padding-right: 1rem;
+}
+
+#page-container {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
 }
 

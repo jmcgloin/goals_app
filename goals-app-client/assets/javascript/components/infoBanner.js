@@ -1,5 +1,5 @@
 class InfoBanner {
-	constructor(message, type) {
+	constructor(message, type = 'no content') {
 		this.message = message
 		this.type = type
 	}
@@ -20,7 +20,15 @@ class InfoBanner {
 	}
 
 	pageHTML() {
-		this.type == 'success' ? successHTML() : failureHTML() //maybe swith to case and use an info default as catchall
+		switch(this.type.toLowerCase()) {
+			case 'success':
+				return this.successHTML();
+			case 'no content':
+				console.log('no content')
+				return null;
+			default:
+				return this.failureHTML();
+		}
 	}
 
 

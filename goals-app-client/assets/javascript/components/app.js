@@ -2,14 +2,14 @@ class App {
 	constructor() {
 		this.bindDOMElements()
 		this.bindEventListeners()
-		this.renderPage(new SignupPage(this.pageContent))
-		this.renderPage(new InfoDisplay(this.infoContainer))
+		this.renderPage(new SignupPage(this.pageContainer))
+		// this.renderInfo('Testing', )//'no content')
 	}
 
 	bindDOMElements() {
 		this.infoContainer = document.getElementById('info-container')
 		this.signInLogIn = document.getElementById('sign-log-in')
-		this.pageContent = document.getElementById('page-content')
+		this.pageContainer = document.getElementById('page-container')
 	}
 
 	bindEventListeners() {
@@ -18,5 +18,10 @@ class App {
 
 	renderPage(page) {
 		page.render()
+	}
+
+	renderInfo(message, type) {
+		const renderInfo = new InfoDisplay(message, type)
+		renderInfo.render()
 	}
 }

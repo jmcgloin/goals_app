@@ -793,3 +793,60 @@ Processing by RegistrationsController#create as JSON
 Completed 400 Bad Request in 216ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 8593)
 
 
+Started POST "/signup" for ::1 at 2020-01-22 23:18:02 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["encrypted_password", "$2a$11$1HvNJ/auaa9OdSN3zsAaROOUvHPI6FdAmyM7pADurJKBNmKLzRwie"], ["username", "jjj"], ["created_at", "2020-01-23 04:18:03.158907"], ["updated_at", "2020-01-23 04:18:03.158907"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (77.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 201 Created in 269ms (Views: 0.4ms | ActiveRecord: 78.9ms | Allocations: 11199)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mStep Load (0.1ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 1]]
+  [1m[36mStep Destroy (0.3ms)[0m  [1m[31mDELETE FROM "steps" WHERE "steps"."id" = ?[0m  [["id", 1]]
+  [1m[36mStep Destroy (0.1ms)[0m  [1m[31mDELETE FROM "steps" WHERE "steps"."id" = ?[0m  [["id", 2]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 1]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[35m (110.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (81.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  [1m[35m (64.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  [1m[35m (80.3ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/signup" for ::1 at 2020-01-22 23:19:45 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}}}
+Completed 500 Internal Server Error in 184ms (ActiveRecord: 1.1ms | Allocations: 8911)
+
+
+  
+NoMethodError (undefined method `emails' for #<User:0x00005579257d4ee0>
+Did you mean?  email
+               email?
+               email=):
+  
+app/controllers/registrations_controller.rb:7:in `create'
+Started POST "/signup" for ::1 at 2020-01-22 23:20:07 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"jjj", "email"=>"", "password"=>"[FILTERED]"}}}
+Completed 422 Unprocessable Entity in 265ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 188269)
+
+
