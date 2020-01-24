@@ -6,7 +6,7 @@ class SignupPage extends BasePageManager {
 	}
 
 	bindDOMElements() {
-		this.form = document.getElementById('signup-form')
+		this.form = document.getElementById('signup-form')//add a button to switch to login
 	}
 
 	bindEventListeners() {
@@ -16,10 +16,11 @@ class SignupPage extends BasePageManager {
 	handleSubmit() {
 		event.preventDefault()
 		const data = new FormData(event.target)
-		this.adapter.signup(
+		const res = this.adapter.signup(
 			{user:
 				{username: data.get("username"), email: data.get("email"), password: data.get("password")}
 			}
 		)
-	}
+	} 
+	//take a return of a promise and use it to call next page manager (userPage?)
 }

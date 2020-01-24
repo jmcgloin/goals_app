@@ -5,10 +5,6 @@ class SignupAdapter extends BaseAdapter {
 		this.URL = this.baseURL + '/signup'
 	}
 
-	// get token() {
-	// 	return this.baseAdapter.token
-	// }
-
 	async signup(params) {
 		const res = await fetch(this.URL, {
 			method: 'POST',

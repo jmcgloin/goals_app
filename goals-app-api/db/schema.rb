@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2020_01_21_075936) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
-  create_table "jwt_blacklists", force: :cascade do |t|
+  create_table "jwt_blacklist", force: :cascade do |t|
     t.string "jti"
     t.datetime "exp"
-    t.index ["jti"], name: "index_jwt_blacklists_on_jti"
+    t.index ["jti"], name: "index_jwt_blacklist_on_jti"
   end
 
   create_table "steps", force: :cascade do |t|

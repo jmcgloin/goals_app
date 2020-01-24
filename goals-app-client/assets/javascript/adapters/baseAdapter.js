@@ -2,6 +2,7 @@ class BaseAdapter {
 	constructor(baseURL) {
 		this.baseURL = baseURL
 		this.token = null
+		this.userId = null
 	}
 
 	get headers() {
@@ -13,7 +14,6 @@ class BaseAdapter {
 	}
 
 	checkStatus(res) {
-		console.log(res)
 		if(res.status < 200 || res.status > 299) throw new Error(res.status, res.message)
 	}
 }

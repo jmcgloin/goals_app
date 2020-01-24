@@ -3,7 +3,8 @@ class App {
 		this.bindDOMElements()
 		this.bindEventListeners()
 		this.adapter = new BaseAdapter('http://localhost:3000')
-		this.renderPage(new SignupPage(this.pageContainer, this.adapter))
+		this.renderPage(new WelcomePageManager(this.pageContainer, this.adapter))
+		// this.renderPage(new SignupPage(this.pageContainer, this.adapter))
 		// this.renderInfo('Testing', )//'no content')
 	}
 
