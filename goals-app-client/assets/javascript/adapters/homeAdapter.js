@@ -2,14 +2,16 @@ class HomeAdapter extends BaseAdapter {
 	constructor(baseAdapter) {
 		super(baseAdapter.baseURL)
 		this.baseAdapter = baseAdapter
-		this.profileURL = baseURL + 'user/profile'
+		this.profileURL = this.baseURL + '/home/user_profile'
 	}
 
-	async getUserProfile(params) {
+	async getUserProfile() {
+		console.log(this.baseAdapter.headers)
 		const res = await fetch(this.profileURL, {
-			headers: this.headers
+			headers: this.baseAdapter.headers
 		})
 		this.checkStatus(res)
-		this.baseAdapter.user = res.json()
+		// this.baseAdapter.userProfile = await res.json()
+		return res.json()
 	}
 }

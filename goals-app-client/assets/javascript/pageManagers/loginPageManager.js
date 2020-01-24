@@ -16,10 +16,15 @@ class LoginPage extends BasePageManager {
 	handleSubmit() {
 		event.preventDefault()
 		const data = new FormData(event.target)
-		this.adapter.login(
+		const res = this.adapter.login(
 			{user:
 				{email: data.get("email"), password: data.get("password")}
 			}
 		)
-	} //take a return of a promise and use it to call next page manager (userPage?)
+			.then(res => res.json())
+			.then(resj => {
+				// console.log('lpm:', res)
+				if(res) (new HomePageManager(this.container, this.baseAdapter))
+		})
+	} 
 }

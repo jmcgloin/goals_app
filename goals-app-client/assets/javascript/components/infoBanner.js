@@ -19,7 +19,7 @@ class InfoBanner {
 			`
 	}
 
-	pageHTML() {
+	get pageHTML() {
 		switch(this.type.toLowerCase()) {
 			case 'success':
 				return this.successHTML();

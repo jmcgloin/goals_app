@@ -6,6 +6,6 @@ class HomeController < ApplicationController
 
 	def user_profile
 		user = current_user
-		render json: user
+		render json: user, include: :goals
 	end
 end

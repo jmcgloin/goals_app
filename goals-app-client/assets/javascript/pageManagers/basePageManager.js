@@ -5,7 +5,7 @@ class BasePageManager {
 	}
 
 	render() {
-		this.container.innerHTML = this.content.pageHTML()
+		this.container.innerHTML = this.content.pageHTML
 		this.bindDOMElements()
 		this.bindEventListeners()
 	}

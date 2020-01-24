@@ -1,10 +1,10 @@
 class HomePage {
 	constructor(user) {
+		console.log(user)
 		this.username = user.username
-
 	}
 	//this will show the user profile  and give  options to interact with goals and steps
-	pageHTML() {
+	get pageHTML() {
 		return `
 			<div id="user-profile" class="mx-8">
 				<h1>Welcome, ${this.username},</h1>

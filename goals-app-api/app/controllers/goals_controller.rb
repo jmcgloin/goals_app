@@ -3,34 +3,27 @@ class GoalsController < ApplicationController
 		before_action :set_goal, only: [:show, :edit, :update, :destroy]
 		
 		def index
-			@goals = Goal.all
-		end
-	
-		def new
-			@goal = Goal.new
+			goals = Goal.all
+			render json: goals
 		end
 	
 		def create
-			@goal = Goal.create(goal_params)
-			redirect_to goal_path(@goal)
+			goal = Goal.create(goal_params)
+			render json: goal
 		end
-	
-		def edit
-			
-		end
-	
+
 		def update
 			@goal.update(goal_params)
-			redirect_to goal_path(@goal)
+			render json: goal
 		end
 	
 		def show
-			
+			render json: @goal		
 		end
 	
 		def destroy
 			@goal.destroy
-			redirect_to goals_path
+			render json: {message: 'destroyed'}
 		end
 	
 		private

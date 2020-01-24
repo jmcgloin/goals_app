@@ -1,12 +1,10 @@
 class HomePageManager extends BasePageManager {
 	constructor(container, baseAdapter) {
 		super(container, baseAdapter)
-		this.content = new HomePage()
-		this.adapter = new HomePageAdapter(baseAdapter)
-		this.user = null
-		this.userGoals = null
-		this.goalSteps = null
-		handleGetUserProfile()
+		this.userProfile = null
+		this.content = 
+		this.adapter = new HomeAdapter(baseAdapter)
+		this.handleGetUserProfile()
 	}
 
 	bindDOMElements() {
@@ -20,9 +18,9 @@ class HomePageManager extends BasePageManager {
 	bindEventListeners() {
 		Array.from(this.goals).forEach(goal => goal.addEventListener('click', handleViewGoal))
 		Array.from(this.markCompletedChecks).forEach(check => check.addEventListener('click', handleMarkStepCompleted))
-		this.newGoalButton.addEventListener('click', handleShowNewGoalForm)
-		this.newGoalForm.addEventListener('submit', handleCreateNewGoal)
-		this.showAllGoals.addEventListener('click', handleShowAllGoals)
+		// this.newGoalButton.addEventListener('click', handleShowNewGoalForm)
+		// this.newGoalForm.addEventListener('submit', handleCreateNewGoal)
+		// this.showAllGoals.addEventListener('click', handleShowAllGoals)
 	}
 
 	handleCreateNewGoal() {
@@ -51,6 +49,15 @@ class HomePageManager extends BasePageManager {
 
 	handleGetUserProfile() {
 		const res = this.adapter.getUserProfile()
+			.then(res => {
+				this.baseAdapter.userProfile = res
+				console.log('userProfile: ',this.baseAdapter.userProfile)
+				this.content = new HomePage(this.baseAdapter.userProfile)
+				console.log(res)
+				this.render()
+			})
+		// this.username = this.baseAdapter.userProfile.username
+		// this.goals = this.baseAdapter.userProfile.goals
 
 	}
 }

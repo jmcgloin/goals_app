@@ -2,7 +2,7 @@ class BaseAdapter {
 	constructor(baseURL) {
 		this.baseURL = baseURL
 		this.token = null
-		this.userId = null
+		this.userProfile = null
 	}
 
 	get headers() {
