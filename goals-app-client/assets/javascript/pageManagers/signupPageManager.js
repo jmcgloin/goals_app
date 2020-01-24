@@ -20,9 +20,12 @@ class SignupPage extends BasePageManager {
 			{user:
 				{username: data.get("username"), email: data.get("email"), password: data.get("password")}
 			}
-		).then(res => res.json())
-			.then(resj => {
-				// console.log('lpm:', res)
-				if(res) (new HomePageManager(this.container, this.baseAdapter))
+		)
+		.then(res => res.json())
+		.then(resj => {
+				if(res) new HomePageManager(this.container, this.baseAdapter)
+			}
+		)
+		
 	} 
 }

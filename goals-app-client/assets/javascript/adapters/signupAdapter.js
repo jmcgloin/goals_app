@@ -13,5 +13,6 @@ class SignupAdapter extends BaseAdapter {
 		})
 		this.checkStatus(res)
 		this.baseAdapter.token = res.headers.get("authorization")
+		return await res
 	}
 }

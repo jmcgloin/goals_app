@@ -6,7 +6,9 @@ class LoginPage extends BasePageManager {
 	}
 
 	bindDOMElements() {
-		this.form = document.getElementById('login-form') //add a button to switch to signup
+		this.form = document.getElementById('login-form')
+		this.loginLink = document.getElementById('login-link')
+
 	}
 
 	bindEventListeners() {
@@ -24,6 +26,7 @@ class LoginPage extends BasePageManager {
 			.then(res => res.json())
 			.then(resj => {
 				// console.log('lpm:', res)
+				// this.loginLink
 				if(res) (new HomePageManager(this.container, this.baseAdapter))
 		})
 	} 

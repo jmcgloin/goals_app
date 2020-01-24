@@ -5,10 +5,6 @@ class LoginAdapter extends BaseAdapter {
 		this.URL = this.baseURL + '/login'
 	}
 
-	// get token() {
-	// 	return this.baseAdapter.token
-	// }
-
 	async login(params) {
 		const res = await fetch(this.URL, {
 			method: 'POST',
@@ -17,8 +13,6 @@ class LoginAdapter extends BaseAdapter {
 		})
 		this.checkStatus(res)
 		this.baseAdapter.token = res.headers.get("authorization")
-		// console.log(this.baseAdapter.token)
-		// console.log(res)
 		return await res
 	}
 }
