@@ -1,6 +1,5 @@
 class HomePage {
 	constructor(user) {
-		console.log(user)
 		this.username = user.username
 	}
 	//this will show the user profile  and give  options to interact with goals and steps

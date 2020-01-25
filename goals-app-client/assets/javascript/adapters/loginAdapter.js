@@ -3,7 +3,6 @@ class LoginAdapter extends BaseAdapter {
 		super(baseAdapter.baseURL)
 		this.baseAdapter = baseAdapter
 		this.loginURL = this.baseURL + '/login'
-		this.logoutURL = this.baseURL + '/logout'
 	}
 
 	async login(params) {
@@ -15,11 +14,5 @@ class LoginAdapter extends BaseAdapter {
 		this.checkStatus(res)
 		this.baseAdapter.token = res.headers.get("authorization")
 		return await res
-	}
-
-	async logout() {
-		const res = await fetch(this.logoutURL, {
-			method: 'DELETE'
-		})
 	}
 }

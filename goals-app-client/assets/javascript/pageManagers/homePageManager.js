@@ -51,9 +51,7 @@ class HomePageManager extends BasePageManager {
 		const res = this.adapter.getUserProfile()
 			.then(res => {
 				this.baseAdapter.userProfile = res
-				console.log('userProfile: ',this.baseAdapter.userProfile)
 				this.content = new HomePage(this.baseAdapter.userProfile)
-				console.log(res)
 				this.render()
 			})
 		// this.username = this.baseAdapter.userProfile.username

@@ -1,4 +1,4 @@
-class SignupPage extends BasePageManager {
+class SignupPageManager extends BasePageManager {
 	constructor(container, baseAdapter){
 		super(container, baseAdapter)
 		this.content = new SignupForm()

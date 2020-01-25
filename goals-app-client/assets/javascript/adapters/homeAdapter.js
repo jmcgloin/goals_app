@@ -6,7 +6,6 @@ class HomeAdapter extends BaseAdapter {
 	}
 
 	async getUserProfile() {
-		console.log(this.baseAdapter.headers)
 		const res = await fetch(this.profileURL, {
 			headers: this.baseAdapter.headers
 		})

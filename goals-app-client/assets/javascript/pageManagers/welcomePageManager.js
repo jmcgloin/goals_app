@@ -1,46 +1,32 @@
 class WelcomePageManager extends BasePageManager {
 	constructor(container, baseAdapter) {
 		super(container, baseAdapter)
-		this.content = new WelcomePage() //this will be a component w/ options to signup or login
+		this.content = new WelcomePage()
+		this.loginPageManager = new LoginPageManager(this.container, this.baseAdapter)
+		this.signupPageManager = new SignupPageManager(this.container, this.baseAdapter)
+		this.logoutPageManager = new LogoutPageManager(this.container, this.baseAdapter)
+		BasePageManager.loginPageManager = this.loginPageManager
+		BasePageManager.signupPageManager = this.signupPageManager
+		BasePageManager.logoutPageManager = this.logoutPageManager
+		this.logoutPageManager.welcomeContent = this.content
 	}
 
 	bindDOMElements() {
 		this.buttons = document.getElementsByTagName('button')
-		this.loginLink = document.getElementById('login-link') || document.getElementById('signup-link')
-		this.inOut = document.getElementById('in-out')
+		this.inOutLink = document.getElementById('in-out-link')
 	}
 
 	bindEventListeners() {
-		Array.from(this.buttons).forEach(button => {
-			button.id == "signup-button" ? button.addEventListener('click', this.handleSignup.bind(this)) : button.addEventListener('click', this.handleLogin.bind(this))
+		// document.getElementById('signup-button').addEventListener('click', this.handleSignup.bind(this))
+		// document.getElementById('login-button').addEventListener('click', this.handleLogin.bind(this))
+		['signup-button', 'login-button'].forEach( button => {
+			document.getElementById(button).addEventListener('click', this.handleButton.bind(this))
 		})
-		this.loginLink.addEventListener('click', this.handleLogin.bind(this))
 	}
 
-	loadNextPage(page) {
-		let nextPage = new page(this.container, this.baseAdapter)
-		nextPage.render()
-		nextPage = null
+	handleButton() {
+		this.inOutLink.innerHTML = {'Log In': 'Sign Up', 'Sign Up': 'Log In'}[this.inOutLink.innerHTML]
+		event.target.id == 'signup-button' ? this.signupPageManager.render() : this.loginPageManager.render()
 	}
 
-	handleLink(id, html, callback = null) {
-		const link = this.loginLink.cloneNode(false)
-		link.setAttribute('id', id)
-		link.innerHTML = html
-		this.inOut.innerHTML = link.outerHTML
-		this.loginLink = document.getElementById(id)
-		this.loginLink.addEventListener('click', callback);
-	}
-
-	handleSignup() {
-		console.log('signup')
-		this.handleLink('login-link', 'Log In', this.handleLogin.bind(this))
-		this.loadNextPage(SignupPage)
-	}
-
-	handleLogin() {
-		console.log('login')
-		this.handleLink('signup-link', 'Sign Up', this.handleSignup.bind(this))
-		this.loadNextPage(LoginPage)
-	}
 }
