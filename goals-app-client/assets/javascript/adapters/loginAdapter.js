@@ -2,11 +2,12 @@ class LoginAdapter extends BaseAdapter {
 	constructor(baseAdapter) {
 		super(baseAdapter.baseURL)
 		this.baseAdapter = baseAdapter
-		this.URL = this.baseURL + '/login'
+		this.loginURL = this.baseURL + '/login'
+		this.logoutURL = this.baseURL + '/logout'
 	}
 
 	async login(params) {
-		const res = await fetch(this.URL, {
+		const res = await fetch(this.loginURL, {
 			method: 'POST',
 			headers: this.headers,
 			body: JSON.stringify(params)
@@ -14,5 +15,11 @@ class LoginAdapter extends BaseAdapter {
 		this.checkStatus(res)
 		this.baseAdapter.token = res.headers.get("authorization")
 		return await res
+	}
+
+	async logout() {
+		const res = await fetch(this.logoutURL, {
+			method: 'DELETE'
+		})
 	}
 }

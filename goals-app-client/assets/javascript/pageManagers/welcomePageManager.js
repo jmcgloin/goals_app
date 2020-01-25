@@ -6,8 +6,8 @@ class WelcomePageManager extends BasePageManager {
 
 	bindDOMElements() {
 		this.buttons = document.getElementsByTagName('button')
-		console.log(this.buttons)
 		this.loginLink = document.getElementById('login-link') || document.getElementById('signup-link')
+		this.inOut = document.getElementById('in-out')
 	}
 
 	bindEventListeners() {
@@ -18,31 +18,29 @@ class WelcomePageManager extends BasePageManager {
 	}
 
 	loadNextPage(page) {
-		// const nextPage = event.target.id == "signup-button" || event.target ? new SignupPage(this.container, this.baseAdapter) : new LoginPage(this.container, this.baseAdapter)
-		// nextPage.render()
-		// if(["signup-button", "signup-link"].includes(even.target.id)) {
-		// 	const nextPage = new SignupPage(this.container, this.baseAdapter)
-		// } else {
-		// 	const nextPage = new LoginPage(this.container, this.baseAdapter)
-		// }
-		const nextPage = new page(this.container, this.baseAdapter)
+		let nextPage = new page(this.container, this.baseAdapter)
 		nextPage.render()
 		nextPage = null
 	}
 
+	handleLink(id, html, callback = null) {
+		const link = this.loginLink.cloneNode(false)
+		link.setAttribute('id', id)
+		link.innerHTML = html
+		this.inOut.innerHTML = link.outerHTML
+		this.loginLink = document.getElementById(id)
+		this.loginLink.addEventListener('click', callback);
+	}
+
 	handleSignup() {
-		this.loginLink.removeEventListener('click', this.handleSignup.bind(this))
-		this.loginLink.innerHTML = "Log In"
-		this.loginLink.setAttribute('id', 'login-link')
-		this.loginLink.addEventListener('click', this.handleLogin.bind(this))
+		console.log('signup')
+		this.handleLink('login-link', 'Log In', this.handleLogin.bind(this))
 		this.loadNextPage(SignupPage)
 	}
 
 	handleLogin() {
-		this.loginLink.removeEventListener('click', this.handleLogin.bind(this))
-		this.loginLink.innerHTML = "Sign Up"
-		this.loginLink.setAttribute('id', 'signup-link')
-		this.loginLink.addEventListener('click', this.handleSignup.bind(this))
+		console.log('login')
+		this.handleLink('signup-link', 'Sign Up', this.handleSignup.bind(this))
 		this.loadNextPage(LoginPage)
 	}
 }

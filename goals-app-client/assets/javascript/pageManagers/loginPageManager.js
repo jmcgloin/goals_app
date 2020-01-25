@@ -7,7 +7,8 @@ class LoginPage extends BasePageManager {
 
 	bindDOMElements() {
 		this.form = document.getElementById('login-form')
-		this.loginLink = document.getElementById('login-link')
+		this.loginLink = document.getElementById('signup-link')
+		this.inOut = document.getElementById('in-out')
 
 	}
 
@@ -25,9 +26,26 @@ class LoginPage extends BasePageManager {
 		)
 			.then(res => res.json())
 			.then(resj => {
-				// console.log('lpm:', res)
-				// this.loginLink
+				this.handleChangeLinkToLogOut()
 				if(res) (new HomePageManager(this.container, this.baseAdapter))
 		})
+	}
+
+	handleChangeLinkToLogOut() {
+		const link = this.loginLink.cloneNode(false)
+		link.setAttribute('id', 'logout-link')
+		link.innerHTML = 'Log Out'
+		this.inOut.innerHTML = link.outerHTML
+		this.loginLink = document.getElementById('logout-link')
+		this.loginLink.addEventListener('click', this.handleLogout.bind(this));
+		// this.loginLink.innerHTML = "Log Out"
+		// this.loginLink.setAttribute('id', 'logout-link')
+		// this.loginLink.addEventListener('click', this.handleLogout.bind(this))
 	} 
+
+	handleLogout() {
+		this.adapter.logout()
+		const welcome = new WelcomePageManager(this.container, this.baseAdapter)
+		welcome.render()
+	}
 }
