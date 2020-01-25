@@ -1,6 +1,6 @@
 class GoalsController < ApplicationController
 
-		before_action :set_goal, only: [:show, :edit, :update, :destroy]
+		before_action :authenticate_user!
 		
 		def index
 			goals = Goal.all
@@ -8,8 +8,13 @@ class GoalsController < ApplicationController
 		end
 	
 		def create
-			goal = Goal.create(goal_params)
-			render json: goal
+			goal = Goal.new(goal_params)
+			goal.user = current_user
+			# binding.pry()
+			if goal.save
+				# binding.pry()
+				render json: current_user.goals
+			end
 		end
 
 		def update

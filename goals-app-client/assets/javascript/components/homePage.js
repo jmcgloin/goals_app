@@ -22,7 +22,7 @@ class HomePage {
 			return `<div class="mx-8 flex justify-around">
 								<div data-goal-id=${goal.id} class="goal">${goal.goalname}</div>
 								<div>${goal.deadline}</div>
-								<div><input type="checkbox" /></div>
+								<div><input type="checkbox" data-goal-id=${goal.id} class="markCompletedChecks" /></div>
 							</div>`
 		}).join('')
 
@@ -36,20 +36,19 @@ class HomePage {
 						`
 	}
 
-	// showGoal(goal) {
-	// 	const goalHTML = 
-	// }
-
 	get newGoalForm() {
+		const goalPlaceholders = ['Learn to ...', 'Make a ...', 'Start writing ....', 'Finish doing ...']
+		const goalPlaceholder = goalPlaceholders[Math.floor(Math.random() * goalPlaceholders.length)]
+		console.log(goalPlaceholder)
 		return `
 			<div class="w-full">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="new-goal-form">
-        <h2 class="block text-gray-700 text-md font-bold text-center">Welcome!</h2>
+        <h2 class="block text-gray-700 text-md font-bold text-center">What's your goal?</h2>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="goalname">
             Goal Name
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="goalname" name="goalname" type="text" placeholder="Learn to ..." required autocomplete='off'>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="goalname" name="goalname" type="text" placeholder=${goalPlaceholder} required autocomplete='off'>
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="deadline">
@@ -61,14 +60,13 @@ class HomePage {
           <label class="block text-gray-700 text-sm font-bold mb-2" for="importance">
             Importance
           </label>
-          <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="importance" name="importance" type="importance" placeholder="******************" required>
-          <p class="text-red-500 text-xs italic">Please choose a importance.</p>
+          ${this.importanceOptionList()}
         </div>
         <div class="flex items-center justify-between">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Add It
           </button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="new-goal-cancel-button">
             Cancel
           </button>
         </div>
@@ -80,23 +78,10 @@ class HomePage {
 
 	}
 
-	// viewAddGoals() {
-	// 	return `
-	// 		<button id="show-all-goals" class=".w-1/3">Show All Goals</button>
-	// 		<button id="new-goal-button" class=".w-1/3">Add a New Goal</button>
-	// 	`
-	// }
-
-
+	importanceOptionList() {
+		const options = [...Array(10).keys()].map(num => `<option value="${num + 1}">${num + 1}</option>`).join('')
+		return `<select name="importance" id="importance">
+							${options}
+						</select>`
+	}
 }
-
-
- // t.string "goalname"
- //    t.string "deadline"
- //    t.integer "importance"
-
-
-	// this.goals = document.getElementsByClassName('goal')
-	// 	this.newGoalButton = document.getElementById('new-goal-button')
-	// 	this.markCompletedChecks = document.getElementsByClassName('completed-check')
-	// 	this.newGoalForm = document.getElementById('new-goal-form')
