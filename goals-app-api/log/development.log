@@ -3228,3 +3228,267 @@ Filter chain halted as :verify_signed_out_user rendered or redirected
 Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (1.0ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "finish this"], ["deadline", "2020-01-27"], ["importance", 10], ["user_id", 4], ["created_at", "2020-01-25 07:01:42.279458"], ["updated_at", "2020-01-25 07:01:42.279458"]]
+  [1m[35m (90.7ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/login" for ::1 at 2020-01-25 02:02:01 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 176ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1951)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:02:01 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "06e8811b-e18b-489f-9dbd-b4f81824336f"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 19ms (Views: 14.7ms | ActiveRecord: 0.8ms | Allocations: 9983)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:07:02 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:07:02 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "7c0b67d6-ba88-48da-b6f6-0c092f8a3001"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:18:47 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 172ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1952)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:18:47 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 73)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:18:57 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 175ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1924)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:18:57 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 72)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:21:18 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 178ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1924)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:21:18 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "a171e338-be27-4ead-8db3-725079fe7558"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 3791)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:22:19 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 176ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:22:19 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "3f299429-5dae-4a39-989c-8c08be950625"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.5ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:24:11 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 175ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:24:12 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "1912aa83-5cbe-4e35-8c18-663c5bb8fb39"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:26:16 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 176ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:26:16 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "a115cabe-6b39-4ca2-a9ca-696a70f4913b"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:28:28 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1926)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:28:29 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "ae86f32b-0200-4717-9bef-6dcdc98c3fb9"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 0.6ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:30:10 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 173ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:30:10 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "e039fdea-e346-4c26-b644-b531c50786f2"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 0.7ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:31:27 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 173ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:31:27 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "4994f7e1-b0ce-4369-b4c4-894bd680f021"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:55:57 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 174ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1951)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:55:57 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "dd3a8135-13d2-475f-9c77-0d77165a8a6c"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 3791)
+
+
+Started POST "/login" for ::1 at 2020-01-25 02:56:58 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 02:56:58 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "b57cc8bd-dc93-4426-b924-3ec061323b7a"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 03:00:42 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 172ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 03:00:42 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "271b22f8-573c-4939-ba85-778499e35e2b"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.5ms | Allocations: 3748)
+
+
+Started POST "/login" for ::1 at 2020-01-25 03:02:40 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"dig@dog.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "dig@dog.com"], ["LIMIT", 1]]
+Completed 200 OK in 182ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1925)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-25 03:02:40 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "4e6aa377-af8e-4817-9318-e03795325b09"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 3748)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-25 03:03:00 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+

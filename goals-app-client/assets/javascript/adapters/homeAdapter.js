@@ -3,6 +3,7 @@ class HomeAdapter extends BaseAdapter {
 		super(baseAdapter.baseURL)
 		this.baseAdapter = baseAdapter
 		this.profileURL = this.baseURL + '/home/user_profile'
+		this.goalURL = this.baseURL + 'goals/'
 	}
 
 	async getUserProfile() {
@@ -10,7 +11,8 @@ class HomeAdapter extends BaseAdapter {
 			headers: this.baseAdapter.headers
 		})
 		this.checkStatus(res)
+		console.log("ha res: ", res)
 		// this.baseAdapter.userProfile = await res.json()
-		return res.json()
+		return await res
 	}
 }

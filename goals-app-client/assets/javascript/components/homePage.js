@@ -1,6 +1,7 @@
 class HomePage {
 	constructor(user) {
 		this.username = user.username
+		this.goals = user.goals
 	}
 	//this will show the user profile  and give  options to interact with goals and steps
 	get pageHTML() {
@@ -9,31 +10,37 @@ class HomePage {
 				<h1>Welcome, ${this.username},</h1>
 			</div>
 			<div id="current-goals" class="mx-8">
-				<h2>Here are your goals</h2>
-				<div id="goalDisplayTable">
-					<div id="goals" class="flex-col">
-						
-					</div>
-					<div id="checkboxes" class="flex-col">
-
-					</div>
+				<div id="goal-display">
+						${this.listGoals()}
 				</div>
-			</div>
-			<div id="goals-buttons" class="mx-8 flex justify-around">
-				${this.viewAddGoals()}
 			</div>
 		`
 	}
 
 	listGoals() {
-		
+		const goalListHTML = this.goals.map(goal => {
+			return `<div class="mx-8 flex justify-around">
+								<div data-goal-id=${goal.id} class="goal">${goal.goalname}</div>
+								<div>${goal.deadline}</div>
+								<div><input type="checkbox" /></div>
+							</div>`
+		}).join('')
+
+		return `<h2>Here are your goals</h2>
+						<div id="goals" class="flex-col">
+							${goalListHTML}
+						</div>
+						<div id="goals-buttons" class="mx-8 flex justify-around">
+							<button id="new-goal-button" class=".w-1/3">Add a New Goal</button>
+						</div>
+						`
 	}
 
-	listCheckboxes() {
+	// showGoal(goal) {
+	// 	const goalHTML = 
+	// }
 
-	}
-
-	newGoalForm() {
+	get newGoalForm() {
 		return `
 			<div class="w-full">
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="new-goal-form">
@@ -51,15 +58,18 @@ class HomePage {
           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="deadline" name="deadline" type="text" placeholder="2021-01-01" required autocomplete='off'>
         </div>
         <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-            Password
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="importance">
+            Importance
           </label>
-          <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="******************" required>
-          <p class="text-red-500 text-xs italic">Please choose a password.</p>
+          <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="importance" name="importance" type="importance" placeholder="******************" required>
+          <p class="text-red-500 text-xs italic">Please choose a importance.</p>
         </div>
         <div class="flex items-center justify-between">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-            Sign In
+            Add It
+          </button>
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            Cancel
           </button>
         </div>
       </form>
@@ -70,12 +80,12 @@ class HomePage {
 
 	}
 
-	viewAddGoals() {
-		return `
-			<button id="show-all-goals" class=".w-1/3">Show All Goals</button>
-			<button id="new-goal-button" class=".w-1/3">Add a New Goal</button>
-		`
-	}
+	// viewAddGoals() {
+	// 	return `
+	// 		<button id="show-all-goals" class=".w-1/3">Show All Goals</button>
+	// 		<button id="new-goal-button" class=".w-1/3">Add a New Goal</button>
+	// 	`
+	// }
 
 
 }

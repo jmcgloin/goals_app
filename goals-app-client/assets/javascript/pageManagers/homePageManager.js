@@ -2,7 +2,7 @@ class HomePageManager extends BasePageManager {
 	constructor(container, baseAdapter) {
 		super(container, baseAdapter)
 		this.userProfile = null
-		this.content = 
+		this.content = null
 		this.adapter = new HomeAdapter(baseAdapter)
 		this.handleGetUserProfile()
 	}
@@ -13,12 +13,12 @@ class HomePageManager extends BasePageManager {
 		this.markCompletedChecks = document.getElementsByClassName('completed-check')
 		this.newGoalForm = document.getElementById('new-goal-form')
 		this.showAllGoals = document.getElementById('show-all-goals')
+		this.goalDisplay = document.getElementById('goal-display')
 	}
 
 	bindEventListeners() {
-		Array.from(this.goals).forEach(goal => goal.addEventListener('click', handleViewGoal))
-		Array.from(this.markCompletedChecks).forEach(check => check.addEventListener('click', handleMarkStepCompleted))
-		// this.newGoalButton.addEventListener('click', handleShowNewGoalForm)
+		Array.from(this.markCompletedChecks).forEach(check => check.addEventListener('click', this.handleMarkStepCompleted.bind(this)))
+		this.newGoalButton.addEventListener('click', this.handleShowNewGoalForm.bind(this))
 		// this.newGoalForm.addEventListener('submit', handleCreateNewGoal)
 		// this.showAllGoals.addEventListener('click', handleShowAllGoals)
 	}
@@ -28,34 +28,25 @@ class HomePageManager extends BasePageManager {
 	}
 
 	handleShowNewGoalForm() {
-
+		this.goalDisplay.innerHTML = this.content.newGoalForm
 	}
 
-	handleShowNextStep() { //in handleGetUserProfile as .then or await if current user has goals and steps
+	// handleShowAllGoals() {
 
-	}
+	// }
 
-	handleViewGoal() {
+	// handleMarkStepCompleted() {
 
-	}
-
-	handleShowAllGoals() {
-
-	}
-
-	handleMarkStepCompleted() {
-
-	}
+	// }
 
 	handleGetUserProfile() {
 		const res = this.adapter.getUserProfile()
-			.then(res => {
-				this.baseAdapter.userProfile = res
+			.then(res => res.json())
+			.then(rj => {
+				this.baseAdapter.userProfile = rj
+				console.log("hpm res: ", rj)
 				this.content = new HomePage(this.baseAdapter.userProfile)
 				this.render()
 			})
-		// this.username = this.baseAdapter.userProfile.username
-		// this.goals = this.baseAdapter.userProfile.goals
-
 	}
 }
