@@ -22,10 +22,11 @@ class LoginPageManager extends BasePageManager {
 				{email: data.get("email"), password: data.get("password")}
 			}
 		)
-			.then(res => res.json())
-			.then(resj => {
+			.then(r => r.json())
+			.then(rj => {
+				if(rj.errors || rj.error) return;
 				this.inOutLink.innerHTML = "Log Out"
-				if(res) (new HomePageManager(this.container, this.baseAdapter))
+				if(rj) new HomePageManager(this.container, this.baseAdapter)
 		})
 	}
 }

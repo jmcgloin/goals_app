@@ -23,11 +23,14 @@ class InfoBanner {
 		switch(this.type.toLowerCase()) {
 			case 'success':
 				return this.successHTML();
+				break;
 			case 'no content':
 				console.log('no content')
 				return null;
+				break;
 			default:
 				return this.failureHTML();
+				break;
 		}
 	}
 

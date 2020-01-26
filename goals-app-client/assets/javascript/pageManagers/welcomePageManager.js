@@ -17,16 +17,13 @@ class WelcomePageManager extends BasePageManager {
 	}
 
 	bindEventListeners() {
-		// document.getElementById('signup-button').addEventListener('click', this.handleSignup.bind(this))
-		// document.getElementById('login-button').addEventListener('click', this.handleLogin.bind(this))
 		['signup-button', 'login-button'].forEach( button => {
 			document.getElementById(button).addEventListener('click', this.handleButton.bind(this))
 		})
 	}
 
 	handleButton() {
-		this.inOutLink.innerHTML = {'Log In': 'Sign Up', 'Sign Up': 'Log In'}[this.inOutLink.innerHTML]
+		this.inOutLink.innerHTML = {'Log In': 'Sign Up', 'Sign Up': 'Log In'}[event.target.innerHTML]
 		event.target.id == 'signup-button' ? this.signupPageManager.render() : this.loginPageManager.render()
 	}
-
 }

@@ -7,22 +7,36 @@ class HomePageManager extends BasePageManager {
 	}
 
 	bindDOMElements() {
-		// this.goals = document.getElementsByClassName('goal')
-		this.newGoalButton = document.getElementById('new-goal-button')
-		this.markCompletedChecks = document.getElementsByClassName('completed-check')
-		this.goalDisplay = document.getElementById('goal-display')
+
+	}
+	bindEventListeners() {
+		this.bindDOMElementsAndListeners()
 	}
 
-	bindEventListeners() {
-		Array.from(this.markCompletedChecks).forEach(check => check.addEventListener('click', this.handleMarkStepCompleted.bind(this)))
-		this.newGoalButton.addEventListener('click', this.handleShowNewGoalForm.bind(this))
+	bindDOMElementsAndListeners() {
+		this.goalDisplay = document.getElementById("goal-display")
+		Array.from(document.getElementsByClassName('mark-complete')).forEach(button => {
+			if(button) button.addEventListener('click', this.handleMarkGoalComplete.bind(this))
+		})
+		this.newGoalForm = document.getElementById('new-goal-form')
+		// debugger
+		if(!!this.newGoalForm) {
+			// debugger
+			this.newGoalForm.addEventListener('submit', this.handleCreateNewGoal.bind(this))
+		}
+		this.newGoalButton = document.getElementById('new-goal-button')
+		if(!!this.newGoalButton) {
+			this.newGoalButton.addEventListener('click', this.handleShowNewGoalForm.bind(this))
+		}
+		if(!!document.getElementById('new-goal-cancel-button')) {
+			document.getElementById('new-goal-cancel-button').addEventListener('click', this.render.bind(this))
+		}
 	}
 
 	handleCreateNewGoal() {
 		event.preventDefault()
 		const data = new FormData(event.target)
 		event.target.reset()
-		// debugger
 		const res = this.adapter.createNewGoal({
 			goal: {
 				goalname: data.get("goalname"),
@@ -34,21 +48,32 @@ class HomePageManager extends BasePageManager {
 		.then(resj => {
 			this.baseAdapter.userProfile.goals = resj
 			this.content.goals = resj
-			// console.log(this)
-			this.render()
+			this.container.innerHTML = this.content.pageHTML
+			this.handleDelayedBindings()
 		})
 	}
 
 	handleShowNewGoalForm() {
+		console.log('new goal form')
 		this.goalDisplay.innerHTML = this.content.newGoalForm
-		// this.newGoalForm = 
-		document.getElementById('new-goal-form').addEventListener('submit', this.handleCreateNewGoal.bind(this))
-		document.getElementById('new-goal-cancel-button').addEventListener('click', this.render.bind(this))
+		this.handleDelayedBindings()
 	}
 
-	// handleMarkStepCompleted() {
-
-	// }
+	handleMarkGoalComplete() {
+		if(event.target.dataset.goalId == "test"){
+			this.handleShowNewGoalForm()
+			return
+		}
+		console.log('complete')
+		const res = this.adapter.deleteGoal(event.target.dataset.goalId)
+		.then(res => res.json())
+		.then(resj => {
+			this.baseAdapter.userProfile.goals = resj
+			this.content.goals = resj
+			this.container.innerHTML = this.content.pageHTML
+			this.handleDelayedBindings()
+		})
+	}
 
 	handleGetUserProfile() {
 		const res = this.adapter.getUserProfile()
@@ -58,5 +83,9 @@ class HomePageManager extends BasePageManager {
 				this.content = new HomePage(this.baseAdapter.userProfile)
 				this.render()
 			})
+	}
+
+	handleDelayedBindings() {
+		setTimeout(this.bindDOMElementsAndListeners.bind(this), 500)
 	}
 }

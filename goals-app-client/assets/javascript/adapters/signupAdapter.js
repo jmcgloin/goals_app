@@ -11,8 +11,10 @@ class SignupAdapter extends BaseAdapter {
 			headers: this.headers,
 			body: JSON.stringify(params)
 		})
-		this.checkStatus(res)
-		this.baseAdapter.token = res.headers.get("authorization")
-		return await res
+			this.checkStatus(res)
+			this.baseAdapter.token = res.headers.get("authorization")
+			return await res
 	}
+
+
 }

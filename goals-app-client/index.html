@@ -29,12 +29,11 @@
 	<script src="assets/javascript/index.js"></script>
 </head>
 <body>
-	<header>
-		<div id="info-container"></div>
-		<nav id="nav-container">
-
-			<div id="logo">GoalMinder</div>
-			<div id="nav-link-container">
+	<header class="flex flex-col w-screen mt-5">
+		<div id="info-container" class="w-full"></div>
+		<nav id="nav-container" class="flex text-center justify-between w-full">
+			<div id="logo" class="w-2/6">GoalMinder</div>
+			<div id="nav-link-container" class="w-2/6">
 				<div id="in-out">
 					<a href="#" class="nav-link" id="in-out-link">Log In</a>
 				</div>
@@ -42,7 +41,7 @@
 		</nav>
 	</header>
 	<main>
-		<div id="page-container"></div>
+		<div id="page-container" class="flex justify-center h-full"></div>
 	</main>
 	<footer>Toes</footer>
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">

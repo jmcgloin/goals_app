@@ -22,18 +22,12 @@ class App {
 		page.render()
 	}
 
-	renderInfo(message, type) {
-		const renderInfo = new InfoDisplay(message, type)
-		renderInfo.render()
-	}
-
 	handleInOutLink() {
 		let pageManagers = {
 			'Log In': [this.welcomePageManager.loginPageManager, 'Sign Up'],
 			'Sign Up': [this.welcomePageManager.signupPageManager, 'Log In'],
 			'Log Out': [this.welcomePageManager.logoutPageManager, 'Sign Up']
 		}
-		console.log(event.target.innerHTML)
 		pageManagers[event.target.innerHTML][0].render()
 		this.inOutLink.innerHTML  = pageManagers[event.target.innerHTML][1]
 	}

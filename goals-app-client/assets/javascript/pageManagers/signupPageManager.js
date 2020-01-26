@@ -6,7 +6,8 @@ class SignupPageManager extends BasePageManager {
 	}
 
 	bindDOMElements() {
-		this.form = document.getElementById('signup-form')//add a button to switch to login
+		this.form = document.getElementById('signup-form')
+		this.inOutLink = document.getElementById('in-out-link')
 	}
 
 	bindEventListeners() {
@@ -16,16 +17,16 @@ class SignupPageManager extends BasePageManager {
 	handleSubmit() {
 		event.preventDefault()
 		const data = new FormData(event.target)
-		const res = this.adapter.signup(
+		this.adapter.signup(
 			{user:
 				{username: data.get("username"), email: data.get("email"), password: data.get("password")}
 			}
 		)
-		.then(res => res.json())
-		.then(resj => {
-				if(res) new HomePageManager(this.container, this.baseAdapter)
-			}
-		)
-		
+		.then(r => r.json())
+		.then(rj => {
+			if(rj.errors) return;
+			this.inOutLink.innerHTML = "Log Out"
+			new HomePageManager(this.container, this.baseAdapter)
+		})
 	} 
 }

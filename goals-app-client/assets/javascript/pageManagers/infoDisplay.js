@@ -5,6 +5,7 @@ class InfoDisplay {
 	}
 
 	render() {
-		this.container.innerHTML = this.content.pageHTML()
+		this.container.innerHTML = this.content.pageHTML
+		setTimeout(() => this.container.innerHTML = "", 5000)
 	}
 }

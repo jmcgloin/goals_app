@@ -13,18 +13,4 @@ class BasePageManager {
 		this.bindEventListeners()
 	}
 
-	// static set
-
-	// static get loginPageManager() {
-	// 	 return this.loginPageManager
-	// }
-
-	// static get signupPageManager() {
-	// 	 return this.signupPageManager
-	// }
-
-	// static get logoutPageManager() {
-	// 	 return tihs.logoutPageManager
-	// }
-
 }
