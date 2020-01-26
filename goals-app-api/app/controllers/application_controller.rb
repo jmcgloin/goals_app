@@ -3,7 +3,6 @@ class ApplicationController < ActionController::API
   rescue_from AuthorizationError, with: :unauthorized_error
   before_action :configure_permitted_parameters, if: :devise_controller?
 	def render_resource(resource)
-    binding.pry()
     if resource.errors.empty?
       render json: resource
     else
@@ -13,10 +12,9 @@ class ApplicationController < ActionController::API
 
   def validation_error(resource)
     render json: {
-      error: {
-        
-          status: '400',
-          title: 'Bad Request',
+      errors: {
+          status: '477',
+          title: 'Email already exists',
           detail: resource.errors,
           code: '100'
         }

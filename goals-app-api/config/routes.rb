@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   root to: "home#index"
+  get '/home/user_profile', to: 'home#user_profile'
   devise_for :users,
   						path: '',
   						path_names: {

@@ -2,29 +2,48 @@
 <html>
 <head>
 	<title>
-		Reach Your Goals
+		GoalMinder - Reach Your Goals
 	</title>
+	<script src="assets/javascript/components/welcomePage.js"></script>
+	<!-- base -->
+	<script src="assets/javascript/adapters/baseAdapter.js"></script>
+	<script src="assets/javascript/pageManagers/basePageManager.js"></script>
+	<!-- info -->
+	<script src="assets/javascript/pageManagers/infoDisplay.js"></script>
+	<script src="assets/javascript/components/infoBanner.js"></script>
+
+	
+	<script src="assets/javascript/components/homePage.js"></script>
+	<script src="assets/javascript/adapters/homeAdapter.js"></script>
+	<script src="assets/javascript/adapters/loginAdapter.js"></script>
+	<script src="assets/javascript/adapters/logoutAdapter.js"></script>
+	<script src="assets/javascript/adapters/signupAdapter.js"></script>
+	<script src="assets/javascript/components/signupForm.js"></script>
+	<script src="assets/javascript/components/loginForm.js"></script>
+	<script src="assets/javascript/pageManagers/logoutPageManager.js"></script>
+	<script src="assets/javascript/pageManagers/homePageManager.js"></script>
+	<script src="assets/javascript/pageManagers/loginPageManager.js"></script>
+	<script src="assets/javascript/pageManagers/signupPageManager.js"></script>
+	<script src="assets/javascript/pageManagers/welcomePageManager.js"></script>
 	<script src="assets/javascript/components/app.js"></script>
 	<script src="assets/javascript/index.js"></script>
 </head>
 <body>
-	<header>
-		<div id="info-container"></div>
-		<nav id="nav-container">
-			<div id="logo">Logo</div>
-			<div id="nav-link-container">
-				<div id="sign-log-in"></div>
-				<div id="nav-links">
-					<a href="#" class="nav-link">About</a>
-					<a href="#" class="nav-link">Contact</a>
+	<header class="flex flex-col w-screen mt-5">
+		<div id="info-container" class="w-full"></div>
+		<nav id="nav-container" class="flex text-center justify-between w-full">
+			<div id="logo" class="w-2/6">GoalMinder</div>
+			<div id="nav-link-container" class="w-2/6">
+				<div id="in-out">
+					<a href="#" class="nav-link" id="in-out-link">Log In</a>
 				</div>
 			</div>
 		</nav>
 	</header>
 	<main>
-		<div id="page-content"></div>
+		<div id="page-container" class="flex justify-center h-full"></div>
 	</main>
-	<footer></footer>
+	<footer>Toes</footer>
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/stylesheets/styles.css">
 </body>
