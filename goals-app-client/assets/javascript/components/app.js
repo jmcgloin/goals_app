@@ -1,8 +1,10 @@
+const BASEURL = 'http://localhost:3000'
+
 class App {
 	constructor() {
 		this.bindDOMElements()
 		this.bindEventListeners()
-		this.adapter = new BaseAdapter('http://localhost:3000')
+		this.adapter = new BaseAdapter(BASEURL)
 		this.welcomePageManager = new WelcomePageManager(this.pageContainer, this.adapter)
 		this.renderPage(this.welcomePageManager)
 	}

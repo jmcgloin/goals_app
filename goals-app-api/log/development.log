@@ -6844,3 +6844,22 @@ Filter chain halted as :verify_signed_out_user rendered or redirected
 Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
 
 
+Started POST "/login" for ::1 at 2020-01-26 02:19:23 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Completed 200 OK in 189ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 9580)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-26 02:19:23 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "a896aa8f-5efa-44d2-a90f-dd325dae4903"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 34ms (Views: 25.6ms | ActiveRecord: 1.6ms | Allocations: 12202)
+
+
