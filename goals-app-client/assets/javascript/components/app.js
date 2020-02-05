@@ -29,12 +29,7 @@ class App {
 		this.infoContainer.innerHTML = ''
 	}
 
-<<<<<<< HEAD
-	handleInOutLink(bool) {
-		console.log(bool)
-=======
 	handleInOutLink() {
->>>>>>> testing
 		let pageManagers = {
 			'Log In': [this.welcomePageManager.loginPageManager, 'Sign Up'],
 			'Sign Up': [this.welcomePageManager.signupPageManager, 'Log In'],

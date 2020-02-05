@@ -16,11 +16,7 @@ class LogoutPageManager extends BasePageManager {
 	handleLogout() {
 		this.adapter.logout()
 		.then(r => {
-<<<<<<< HEAD
 			if(r.ok) new WelcomePageManager(this.container, this.baseAdapter).render()
-=======
-			if(r.ok) new WelcomePageManager(this.container,  this.baseAdapter).render()
->>>>>>> testing
 		})
 	}
 }
