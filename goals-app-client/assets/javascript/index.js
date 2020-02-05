@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const app = new App(this.restart)
+	const app = new App()
 })

@@ -30,6 +30,7 @@ class App {
 	}
 
 	handleInOutLink(bool) {
+		console.log(bool)
 		let pageManagers = {
 			'Log In': [this.welcomePageManager.loginPageManager, 'Sign Up'],
 			'Sign Up': [this.welcomePageManager.signupPageManager, 'Log In'],
