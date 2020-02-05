@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 		render json: user
 	end
 
+	def index
+		render json: current_user
+	end
+
 	private
 
 	def user_params

@@ -6863,3 +6863,800 @@ Processing by HomeController#user_profile as JSON
 Completed 200 OK in 34ms (Views: 25.6ms | ActiveRecord: 1.6ms | Allocations: 12202)
 
 
+Started POST "/login" for ::1 at 2020-01-27 02:17:26 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"jfdkls", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"jfdkls", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (10.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "jfdkls"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 57ms (ActiveRecord: 10.8ms | Allocations: 3077)
+
+
+Started POST "/login" for ::1 at 2020-01-27 03:03:01 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (16.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Started POST "/login" for ::1 at 2020-01-27 03:03:04 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Started POST "/login" for ::1 at 2020-01-27 03:03:36 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Started POST "/login" for ::1 at 2020-01-27 03:03:37 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Started POST "/login" for ::1 at 2020-01-27 03:03:37 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Completed 200 OK in 202113ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 10100)
+
+
+Completed 200 OK in 205381ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 19586)
+
+
+Completed 200 OK in 206888ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 28968)
+
+
+Completed 200 OK in 239886ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 38433)
+
+
+Completed 200 OK in 242865ms (Views: 0.9ms | ActiveRecord: 16.9ms | Allocations: 66247)
+
+
+Started POST "/login" for ::1 at 2020-01-27 03:07:41 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 42087ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 10880)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/sessions_controller.rb:8:in `respond_with'
+Started POST "/login" for ::1 at 2020-01-27 03:08:33 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+Completed 200 OK in 5848ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 177345)
+
+
+Started POST "/login" for ::1 at 2020-01-27 03:20:17 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 322888ms (ActiveRecord: 0.2ms | Allocations: 64108)
+
+
+  
+SystemExit (exit):
+  
+(pry):11:in `exit'
+(pry):11:in `create'
+app/controllers/sessions_controller.rb:7:in `create'
+Started POST "/login" for ::1 at 2020-01-27 03:25:51 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 2573ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 7479)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 03:25:54 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (18.5ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "6da887da-4140-4480-9b7d-62918413ce50"], ["LIMIT", 1]]
+  [1m[36mGoal Load (22.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 162ms (Views: 113.1ms | ActiveRecord: 42.1ms | Allocations: 12236)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 03:26:18 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 0.0ms | Allocations: 42336)
+
+
+  
+NoMethodError (undefined method `respond_to' for #<SessionsController:0x00007f3e082dee00>
+Did you mean?  respond_to?
+               respond_with
+               responder
+               responder=
+               responder?):
+  
+devise (4.7.1) app/controllers/devise/sessions_controller.rb:78:in `respond_to_on_destroy'
+devise (4.7.1) app/controllers/devise/sessions_controller.rb:65:in `verify_signed_out_user'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:183:in `block in halting_and_conditional'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `block in invoke_before'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `each'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `invoke_before'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.2.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.2.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (6.0.2.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.1.1) lib/rack/builder.rb:176:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware.rb:23:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.1.1) lib/rack/etag.rb:27:in `call'
+rack (2.1.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.1.1) lib/rack/head.rb:14:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/login" for ::1 at 2020-01-27 03:34:02 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 184ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 7128)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 03:34:02 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "e88169b8-ea7a-4538-9bfc-e9a199ba7885"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 16ms (Views: 11.4ms | ActiveRecord: 0.6ms | Allocations: 9418)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 03:34:10 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 0.0ms | Allocations: 42338)
+
+
+  
+NoMethodError (undefined method `respond_to' for #<SessionsController:0x00007f3dfd384388>
+Did you mean?  respond_to?
+               respond_with
+               responder
+               responder=
+               responder?):
+  
+devise (4.7.1) app/controllers/devise/sessions_controller.rb:78:in `respond_to_on_destroy'
+devise (4.7.1) app/controllers/devise/sessions_controller.rb:65:in `verify_signed_out_user'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:183:in `block in halting_and_conditional'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `block in invoke_before'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `each'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:514:in `invoke_before'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.2.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.2.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.2.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.2.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (6.0.2.1) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware/token_dispatcher.rb:20:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware/revocation_manager.rb:21:in `call'
+rack (2.1.1) lib/rack/builder.rb:176:in `call'
+warden-jwt_auth (0.4.0) lib/warden/jwt_auth/middleware.rb:23:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.1.1) lib/rack/etag.rb:27:in `call'
+rack (2.1.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.1.1) lib/rack/head.rb:14:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.1.1) lib/rack/runtime.rb:24:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.1.1) lib/rack/sendfile.rb:113:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/login" for ::1 at 2020-01-27 03:35:08 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 185ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 7644)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 03:35:08 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "d82cd05f-2bf3-401f-a08c-f0ad0039bb19"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 20ms (Views: 12.3ms | ActiveRecord: 1.6ms | Allocations: 9879)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 03:35:09 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 101)
+
+
+Started POST "/login" for ::1 at 2020-01-27 03:36:29 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 177ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1463)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 03:36:30 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "04a8e8d3-18fa-4c6a-bcee-f4169190edd8"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 0.8ms | Allocations: 4064)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 03:36:32 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:15:34 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 175ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1491)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 04:15:35 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "0d472fbb-d64f-44c5-9631-98d42f8ccc1d"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 0.7ms | Allocations: 4108)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 04:15:37 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:29:28 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 175ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1489)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 04:29:28 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "bf42abc4-2030-4948-9f72-8eef7ac5202a"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 4106)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 04:29:30 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:30:01 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 175ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1463)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 04:30:01 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "8d249558-71bd-4958-aa06-d8387af62027"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 9ms (Views: 3.0ms | ActiveRecord: 0.7ms | Allocations: 4063)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-27 04:30:03 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:30:12 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsf", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsf", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsf"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.2ms | Allocations: 949)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:31:12 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsfs", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsfs", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsfs"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.2ms | Allocations: 949)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:35:48 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsfds"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.1ms | Allocations: 949)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:36:57 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsfds"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.1ms | Allocations: 949)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:37:15 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 201 Created in 178ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1473)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-01-27 04:37:16 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "fcb41b49-1aef-405b-9469-15304427afb7"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 0.6ms | Allocations: 4063)
+
+
+Started DELETE "/goals/17" for ::1 at 2020-01-27 04:37:22 -0500
+Processing by GoalsController#destroy as JSON
+  Parameters: {"id"=>"17", "goal"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "fcb41b49-1aef-405b-9469-15304427afb7"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mStep Load (14.9ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 17]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Destroy (6.9ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[35m (128.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/goals_controller.rb:27:in `destroy'
+Completed 200 OK in 182ms (Views: 4.3ms | ActiveRecord: 151.4ms | Allocations: 9602)
+
+
+Started DELETE "/goals/14" for ::1 at 2020-01-27 04:37:24 -0500
+Processing by GoalsController#destroy as JSON
+  Parameters: {"id"=>"14", "goal"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "fcb41b49-1aef-405b-9469-15304427afb7"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mStep Load (0.2ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 14]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Destroy (0.5ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[35m (72.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/goals_controller.rb:27:in `destroy'
+Completed 200 OK in 93ms (Views: 1.6ms | ActiveRecord: 73.7ms | Allocations: 7731)
+
+
+Started DELETE "/goals/13" for ::1 at 2020-01-27 04:37:25 -0500
+Processing by GoalsController#destroy as JSON
+  Parameters: {"id"=>"13", "goal"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "fcb41b49-1aef-405b-9469-15304427afb7"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:24:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mStep Load (0.1ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 13]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Destroy (0.3ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[35m (75.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/goals_controller.rb:25:in `destroy'
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/goals_controller.rb:27:in `destroy'
+Completed 200 OK in 92ms (Views: 2.8ms | ActiveRecord: 76.9ms | Allocations: 7574)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:39:07 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsf", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsf", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsf"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms | Allocations: 1959)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:41:15 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsfds"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.9ms | Allocations: 2576)
+
+
+Started POST "/login" for ::1 at 2020-01-27 04:41:35 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"fdsfds", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fdsfds"], ["LIMIT", 1]]
+  ↳ (pry):5:in `create'
+Completed 401 Unauthorized in 126520ms (ActiveRecord: 1.6ms | Allocations: 271571)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:44:58 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 308ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 191884)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:45:26 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 180ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 3081)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:45:45 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 189ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 9286)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:45:57 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"dsfds", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 179ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 3080)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:46:09 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"jdsfkl", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"jdsfkl", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 176ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 3056)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:46:55 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"Jason", "email"=>"jfsldjkf", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"Jason", "email"=>"jfsldjkf", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Jason"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 422 Unprocessable Entity in 189ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 9230)
+
+
+Started POST "/signup" for ::1 at 2020-01-27 04:47:11 -0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"username"=>"fsdfsad", "email"=>"j@son.com", "password"=>"[FILTERED]"}, "registration"=>{"user"=>{"username"=>"fsdfsad", "email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "fsdfsad"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "j@son.com"], ["encrypted_password", "$2a$11$EVKxZux95fbToM7qEBpzWu9..qDMBq18xqPkonj1kwi/jP/xwQVma"], ["username", "fsdfsad"], ["created_at", "2020-01-27 09:47:11.990342"], ["updated_at", "2020-01-27 09:47:11.990342"]]
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/registrations_controller.rb:7:in `create'
+Completed 400 Bad Request in 20056ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 24713)
+
+
+Started POST "/login" for ::1 at 2020-02-04 22:00:38 -0500
+  [1m[35m (14.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}}}
+Started POST "/login" for ::1 at 2020-02-04 22:00:40 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}}}
+Started POST "/login" for ::1 at 2020-02-04 22:00:44 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"jj@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "jj@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 401 Unauthorized in 51788ms (ActiveRecord: 1.0ms | Allocations: 11845)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "jj@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 401 Unauthorized in 59610ms (ActiveRecord: 0.5ms | Allocations: 809021)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "jj@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 401 Unauthorized in 63112ms (ActiveRecord: 0.3ms | Allocations: 832822)
+
+
+Started POST "/login" for ::1 at 2020-02-04 22:01:55 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+Started POST "/login" for ::1 at 2020-02-04 22:01:58 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 200 OK in 6476ms (Views: 0.7ms | ActiveRecord: 2.3ms | Allocations: 22619)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:02:02 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "b71eaadc-290c-4382-ac30-c04fd0c64287"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 194ms (Views: 179.8ms | ActiveRecord: 1.7ms | Allocations: 16461)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 200 OK in 3896ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 33083)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:02:06 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "fae77426-767d-41a4-b62d-7b7a8ff6831b"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 0.8ms | Allocations: 3637)
+
+
+Started POST "/login" for ::1 at 2020-02-04 22:02:55 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 200 OK in 18415ms (Views: 3.0ms | ActiveRecord: 2.1ms | Allocations: 32284)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:03:14 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "172388d1-8e45-41fc-add7-a6eb3d9c84a9"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 25ms (Views: 7.3ms | ActiveRecord: 1.9ms | Allocations: 13609)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 22:03:19 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 220)
+
+
+Started POST "/login" for ::1 at 2020-02-04 22:03:42 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Started POST "/login" for ::1 at 2020-02-04 22:03:44 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 200 OK in 14833ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 9623)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:03:59 -0500
+Completed 200 OK in 18921ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 39016)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "f35c7d00-a862-4d08-a2aa-50adbd4e83a4"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 22ms (Views: 6.9ms | ActiveRecord: 1.9ms | Allocations: 13512)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:04:01 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "5f61288d-d964-4a40-a8e8-2da162b13d8e"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 0.5ms | Allocations: 3594)
+
+
+Started POST "/login" for ::1 at 2020-02-04 22:04:18 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:11:in `create'
+Completed 200 OK in 184ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 9077)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 22:04:18 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "bbcbbf43-5299-4aaa-b9ba-709cdbfc4fcb"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 1.1ms | Allocations: 7381)
+
+
