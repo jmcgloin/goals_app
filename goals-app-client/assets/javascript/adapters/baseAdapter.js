@@ -14,6 +14,10 @@ class BaseAdapter {
 	}
 
 	checkStatus(res) {
+		if(res.message ==  "Failed to fetch") {
+			this.renderInfo("The server is not responding", "failure")
+			return
+		}
 		if(res.status < 200 || res.status > 299) {
 			switch(res.status) {
 				case 400:
