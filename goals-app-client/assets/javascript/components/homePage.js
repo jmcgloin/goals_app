@@ -60,13 +60,13 @@ class HomePage {
 		          <label class="block text-gray-700 text-sm font-bold mb-2" for="goalname">
 		            Goal Name
 		          </label>
-		          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="goalname" name="goalname" type="text" placeholder=${goalPlaceholder} required autocomplete='off'>
+		          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="goalname" name="goalname" type="text" placeholder=${goalPlaceholder} autofocus required autocomplete='off'>
 		        </div>
 		        <div class="mb-4">
 		          <label class="block text-gray-700 text-sm font-bold mb-2" for="deadline">
 		            Deadline
 		          </label>
-		          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="deadline" name="deadline" type="text" placeholder="2021-01-01" required autocomplete='off'>
+		          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="deadline" name="deadline" type="text" value=${this.dateToday()} required autocomplete='off'>
 		        </div>
 		        <div class="mb-6">
 		          <label class="block text-gray-700 text-sm font-bold mb-2" for="importance">

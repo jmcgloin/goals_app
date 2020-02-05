@@ -29,13 +29,13 @@ class App {
 		this.infoContainer.innerHTML = ''
 	}
 
-	handleInOutLink(bool) {
+	handleInOutLink() {
 		let pageManagers = {
 			'Log In': [this.welcomePageManager.loginPageManager, 'Sign Up'],
 			'Sign Up': [this.welcomePageManager.signupPageManager, 'Log In'],
 			'Log Out': [this.welcomePageManager.logoutPageManager, 'Sign Up']
 		}
-		if(bool) pageManagers[event.target.innerHTML][0].render();
+		pageManagers[event.target.innerHTML][0].render();
 		this.inOutLink.innerHTML  = pageManagers[event.target.innerHTML][1]
 	}
 }
