@@ -7660,3 +7660,234 @@ Processing by HomeController#user_profile as JSON
 Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 1.1ms | Allocations: 7381)
 
 
+Started POST "/login" for ::1 at 2020-02-04 23:13:48 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 188ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 9077)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:13:48 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "0d40fc5f-d913-4939-8628-d5f45d503d6c"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 15ms (Views: 9.4ms | ActiveRecord: 1.0ms | Allocations: 7381)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:13:56 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 105)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:14:34 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 178ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1445)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:14:34 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "4f7c94f9-3733-44e2-8e2e-1b7f5ea30e6d"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 15ms (Views: 3.6ms | ActiveRecord: 0.5ms | Allocations: 3596)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:14:36 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 95)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:17:06 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 185ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 9077)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:17:06 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "e07521bf-0754-47d2-b863-7a18367edcd0"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 14ms (Views: 8.9ms | ActiveRecord: 1.1ms | Allocations: 7381)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:17:08 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 105)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:21:53 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 178ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1441)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:21:53 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "3482b272-043d-421e-bf28-5c369218aecc"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 15ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 3596)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:21:56 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 95)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:29:14 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 177ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 1458)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:29:14 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "9a36dd7e-f646-4fd2-acf8-21e140bfc016"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 15ms (Views: 3.8ms | ActiveRecord: 0.7ms | Allocations: 3638)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:29:16 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 95)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:32:12 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 180ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1438)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:32:12 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "e53a900a-a9e8-4c79-b5c7-d263c7989212"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 21ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 3601)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:32:14 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:38:13 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1462)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:38:13 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "95c9d440-364f-4788-b37d-00766aeeac7f"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.6ms | Allocations: 3638)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:38:15 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:39:10 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 181ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1423)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:39:10 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "edbbf080-979c-4537-94a0-3a46e2a4e64b"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 7ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 3593)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:39:11 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
+Started POST "/login" for ::1 at 2020-02-04 23:39:36 -0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"j@son.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "j@son.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:9:in `create'
+Completed 200 OK in 177ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1423)
+
+
+Started GET "/home/user_profile" for ::1 at 2020-02-04 23:39:37 -0500
+Processing by HomeController#user_profile as JSON
+  Parameters: {"home"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mJwtBlacklist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_blacklist" WHERE "jwt_blacklist"."jti" = ? LIMIT ?[0m  [["jti", "c8587671-e7a7-478a-899a-f5fd8c951764"], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/controllers/home_controller.rb:9:in `user_profile'
+Completed 200 OK in 17ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 3593)
+
+
+Started DELETE "/logout" for ::1 at 2020-02-04 23:39:47 -0500
+Processing by SessionsController#destroy as JSON
+  Parameters: {"session"=>{}}
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms | Allocations: 93)
+
+
