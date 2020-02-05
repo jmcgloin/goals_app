@@ -1,7 +1,6 @@
 class LogoutPageManager extends BasePageManager {
 	constructor(container, baseAdapter) {
 		super(container, baseAdapter)
-		this.welcomeContent = null
 		this.adapter = new LogoutAdapter(baseAdapter)
 		this.inOutLink = document.getElementById('in-out-link')
 	}
@@ -17,7 +16,7 @@ class LogoutPageManager extends BasePageManager {
 	handleLogout() {
 		this.adapter.logout()
 		.then(r => {
-			BasePageManager.loginPageManager.render()
+			if(r.ok) new App()
 		})
 	}
 }

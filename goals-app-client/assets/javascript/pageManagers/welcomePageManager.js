@@ -5,9 +5,9 @@ class WelcomePageManager extends BasePageManager {
 		this.loginPageManager = new LoginPageManager(this.container, this.baseAdapter)
 		this.signupPageManager = new SignupPageManager(this.container, this.baseAdapter)
 		this.logoutPageManager = new LogoutPageManager(this.container, this.baseAdapter)
-		BasePageManager.loginPageManager = this.loginPageManager
-		BasePageManager.signupPageManager = this.signupPageManager
-		BasePageManager.logoutPageManager = this.logoutPageManager
+		// BasePageManager.loginPageManager = this.loginPageManager
+		// BasePageManager.signupPageManager = this.signupPageManager
+		// BasePageManager.logoutPageManager = this.logoutPageManager
 		this.logoutPageManager.welcomeContent = this.content
 	}
 

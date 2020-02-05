@@ -10,7 +10,6 @@ class LogoutAdapter extends BaseAdapter {
 			method: 'DELETE',
 			headers: this.headers
 		})
-
 		this.checkStatus(res)
 		this.baseAdapter.token = ''
 		return await res

@@ -27,6 +27,7 @@ class BaseAdapter {
 					break;
 				case 500:
 					this.renderInfo("The server is not responding", "failure")
+					break;
 				default:
 					throw("other ", res.status)
 			}
@@ -38,7 +39,4 @@ class BaseAdapter {
 		renderInfo.render()
 	}
 
-	noCurrentUser() {
-		// welcome = new Welcome()
-	}
 }

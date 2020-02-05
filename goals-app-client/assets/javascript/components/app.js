@@ -18,19 +18,24 @@ class App {
 
 	bindEventListeners() {
 		this.inOutLink.addEventListener('click', this.handleInOutLink.bind(this))
+		this.infoContainer.addEventListener('click', this.clearInfoContainer.bind(this))
 	}
 
 	renderPage(page) {
 		page.render()
 	}
 
-	handleInOutLink() {
+	clearInfoContainer() {
+		this.infoContainer.innerHTML = ''
+	}
+
+	handleInOutLink(bool) {
 		let pageManagers = {
 			'Log In': [this.welcomePageManager.loginPageManager, 'Sign Up'],
 			'Sign Up': [this.welcomePageManager.signupPageManager, 'Log In'],
 			'Log Out': [this.welcomePageManager.logoutPageManager, 'Sign Up']
 		}
-		pageManagers[event.target.innerHTML][0].render()
+		if(bool) pageManagers[event.target.innerHTML][0].render();
 		this.inOutLink.innerHTML  = pageManagers[event.target.innerHTML][1]
 	}
 }

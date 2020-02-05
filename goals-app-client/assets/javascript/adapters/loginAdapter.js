@@ -11,8 +11,13 @@ class LoginAdapter extends BaseAdapter {
 			headers: this.headers,
 			body: JSON.stringify(params)
 		})
+		try {
 		this.checkStatus(res)
 		this.baseAdapter.token = res.headers.get("authorization")
 		return await res
+		}
+		catch(err) {
+			
+		}
 	}
 }
