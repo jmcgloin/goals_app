@@ -19,9 +19,7 @@ class HomePageManager extends BasePageManager {
 			if(button) button.addEventListener('click', this.handleMarkGoalComplete.bind(this))
 		})
 		this.newGoalForm = document.getElementById('new-goal-form')
-		// debugger
 		if(!!this.newGoalForm) {
-			// debugger
 			this.newGoalForm.addEventListener('submit', this.handleCreateNewGoal.bind(this))
 		}
 		this.newGoalButton = document.getElementById('new-goal-button')
