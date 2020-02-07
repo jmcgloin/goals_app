@@ -28,11 +28,14 @@ class HomePage {
 		`
 	}
 
-	listGoals() {
-		if(this.goals.length == 0) this.goals.push({goalname: "Add a new goal", deadline: this.dateToday(), id: "test"})
-		return this.goals.map((goal, i) => {
+	listGoals(sorted = false) {
+		if(this.goals.length == 0) this.goals.push({goalname: "Add a new goal", deadline: this.dateToday(), id: "test"});
+		if(sorted) this.goals.sort((g1,g2) => -g1.importance + g2.importance)
+		return `<div class="flex pt-2 w-5/6" ><button id="sort-button">Sort by importance</button></div>` + 
+			this.goals.map((goal, i) => {
 			const shade = (i%2 + 3) * 100
-			return `<div class="flex pt-2 w-5/6 bg-gray-${shade} ">
+			return `
+							<div class="flex pt-2 w-5/6 bg-gray-${shade} ">
 							  
 							  <div class="w-2/4 h-8 text-right align-middle  goal" data-goal-id=${goal.id}>${goal.goalname}</div>
 							  <div class="w-1/4 h-8 text-center bg-gray-${shade}">${goal.deadline}</div>

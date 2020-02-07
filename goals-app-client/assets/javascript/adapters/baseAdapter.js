@@ -33,7 +33,7 @@ class BaseAdapter {
 					this.renderInfo("The server is not responding", "failure")
 					break;
 				default:
-					throw("other ", res.status)
+					throw("other ", res.status) //throw is not a fn, keyword??
 			}
 		} 
 	}

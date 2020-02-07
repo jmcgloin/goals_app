@@ -14,7 +14,7 @@ testUser = User.create(username: 'Test', email: 't@est.com', password: 'asdfasfd
 	Goal.create(
 		goalname: "Find #{Faker::JapaneseMedia::SwordArtOnline.item}",
 		deadline: '2020-01-24',
-		importance: 10,
+		importance: rand(1..10),
 		user: testUser
 	)
 }

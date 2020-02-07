@@ -29,6 +29,15 @@ class HomePageManager extends BasePageManager {
 		if(!!document.getElementById('new-goal-cancel-button')) {
 			document.getElementById('new-goal-cancel-button').addEventListener('click', this.render.bind(this))
 		}
+		if(!!document.getElementById('sort-button')) {
+			document.getElementById('sort-button').addEventListener('click', this.handleSortGoals.bind(this))
+		}
+	}
+
+	handleSortGoals() {
+		this.goalDisplay.innerHTML = this.content.listGoals(true)
+		// console.log(this.goalDisplay.innerHTML)
+		this.handleDelayedBindings()
 	}
 
 	handleCreateNewGoal() {
