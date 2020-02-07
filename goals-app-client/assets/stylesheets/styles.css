@@ -19,3 +19,13 @@ main {
 header {
 	align-items: center;
 }
+
+footer {
+	align-items: center;
+}
+
+#social {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
