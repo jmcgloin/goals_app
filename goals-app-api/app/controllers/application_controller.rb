@@ -11,7 +11,6 @@ class ApplicationController < ActionController::API
   end
 
   def validation_error(resource)
-    binding.pry()
     render json: {
       errors: {
           status: '477',
@@ -31,7 +30,6 @@ class ApplicationController < ActionController::API
   end
 
   def not_found
-    binding.pry()
     render json: { message: "Resource not found" }, status: 404
   end
 
