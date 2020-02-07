@@ -8099,3 +8099,92 @@ Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 105)
 >>>>>>> testing
 
 
+  [1m[35m (17.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (14.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Test"], ["LIMIT", 1]]
+  [1m[36mUser Create (8.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "t@est.com"], ["encrypted_password", "$2a$11$fptusBp6RwqKIgVyZreYT.3aZaxBrYRnzV1J.2tInDW9AVZ1RKcTy"], ["username", "Test"], ["created_at", "2020-02-07 03:18:36.469171"], ["updated_at", "2020-02-07 03:18:36.469171"]]
+  [1m[35m (392.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Test"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Test"], ["LIMIT", 1]]
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["goalname", "Find Sword Breaker"], ["deadline", "2020-01-24"], ["importance", 10], ["created_at", "2020-02-07 03:20:12.508202"], ["updated_at", "2020-02-07 03:20:12.508202"]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.1ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 12]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 12]]
+  [1m[35m (83.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "Test"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "t@est.com"], ["encrypted_password", "$2a$11$0VjMRwY5wf.pUg3e4mrFs.9YvjqE1xl63CbGDNnDnq06hx1PBKR16"], ["username", "Test"], ["created_at", "2020-02-07 03:21:58.733238"], ["updated_at", "2020-02-07 03:21:58.733238"]]
+  [1m[35m (59.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Tremble Shortcake"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:58.937592"], ["updated_at", "2020-02-07 03:21:58.937592"]]
+  [1m[35m (67.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Kagemitsu G4"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.009380"], ["updated_at", "2020-02-07 03:21:59.009380"]]
+  [1m[35m (78.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Conflagrant Flame Bow"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.092062"], ["updated_at", "2020-02-07 03:21:59.092062"]]
+  [1m[35m (70.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Vendor's Carpet"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.166782"], ["updated_at", "2020-02-07 03:21:59.166782"]]
+  [1m[35m (60.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Pneuma Flower"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.232044"], ["updated_at", "2020-02-07 03:21:59.232044"]]
+  [1m[35m (86.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Black Iron Great Sword"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.322625"], ["updated_at", "2020-02-07 03:21:59.322625"]]
+  [1m[35m (78.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Crystal Bottle of Kales'Oh"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.405231"], ["updated_at", "2020-02-07 03:21:59.405231"]]
+  [1m[35m (61.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Dark Repulser"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.471109"], ["updated_at", "2020-02-07 03:21:59.471109"]]
+  [1m[35m (77.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Stout Brand"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.553665"], ["updated_at", "2020-02-07 03:21:59.553665"]]
+  [1m[35m (77.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Create (0.3ms)[0m  [1m[32mINSERT INTO "goals" ("goalname", "deadline", "importance", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["goalname", "Find Metamaterial Optical Camouflage Mantle"], ["deadline", "2020-01-24"], ["importance", 10], ["user_id", 13], ["created_at", "2020-02-07 03:21:59.635722"], ["updated_at", "2020-02-07 03:21:59.635722"]]
+  [1m[35m (66.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ? LIMIT ?[0m  [["user_id", 13], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGoal Load (0.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = ?[0m  [["user_id", 13]]
+  [1m[36mStep Load (0.4ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 24]]
+  [1m[36mGoal Destroy (0.7ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 24]]
+  [1m[36mStep Load (0.1ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 25]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 25]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 26]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 26]]
+  [1m[36mStep Load (0.1ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 27]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 27]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 28]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 28]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 29]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 29]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 30]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 30]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 31]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 31]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 32]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 32]]
+  [1m[36mStep Load (0.0ms)[0m  [1m[34mSELECT "steps".* FROM "steps" WHERE "steps"."goal_id" = ?[0m  [["goal_id", 33]]
+  [1m[36mGoal Destroy (0.1ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = ?[0m  [["id", 33]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 13]]
+  [1m[35m (76.5ms)[0m  [1m[36mcommit transaction[0m
