@@ -1,4 +1,4 @@
-# Project Title
+# Goals
 
 Goal manager app.  Ruby api with JS front end.
 
